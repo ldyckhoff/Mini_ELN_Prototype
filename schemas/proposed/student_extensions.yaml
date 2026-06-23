@@ -1,0 +1,12 @@
+version: '2026-06-22'
+processes:
+- id: melting
+  label: Melting
+  category_id: melting
+  hierarchy: []
+  definition: 'Melting of metal '
+  synonyms: []
+  parameters: []
+  status: proposed
+  reason: 'Scope: common process'
+  source_schema: proposed

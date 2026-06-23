@@ -1,0 +1,4522 @@
+version: '2026-06-23'
+processes:
+- id: acid_treatment
+  label: Acid Treatment
+  category_id: chemical_treatment
+  category_label: Chemical Treatment
+  hierarchy:
+  - ChemicalTreatment
+  - AcidTreatment
+  definition: 'Immersion of a material in an acidic solution to chemically modify
+    the surface or internal structure.
+
+    Synonyms: Acid immersion, Chemical etching, Acid wash'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: medium
+    label: Medium
+    type: string
+    required: true
+    description: The type of acid solution used for the treatment.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: medium_concentration
+    label: Medium Concentration
+    type: string
+    required: true
+    description: The concentration of the acid in the medium.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The length of time the sample is immersed in the acid.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: false
+    description: The temperature of the acid solution during treatment.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: volume
+    label: Volume
+    type: number
+    required: false
+    description: The total volume of the acid solution used.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: volume_units
+    label: Volume Units
+    type: string
+    required: false
+    description: Units for volume.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: alloy_melting
+  label: Alloy Melting
+  category_id: alloy_preparation
+  category_label: Alloy Preparation
+  hierarchy:
+  - AlloyPreparation
+  - AlloyMelting
+  definition: 'The process of heating elemental materials above their melting points
+    to create a homogeneous metallic alloy, typically resulting in an ingot. This
+    operation may employ different heating methods such as arc, induction, or electron
+    beam melting.
+
+    Synonyms: arc melting, induction melting, electron beam melting, alloy synthesis
+    via melting, master alloy preparation'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_materials
+    label: Input Materials
+    type: string
+    required: true
+    description: The elemental materials or precursor materials used to create the
+      alloy.
+    example_values:
+    - Al
+    - Au
+    - Ag
+    - Pd
+    - Co
+    - Cu
+    status: official
+    source_schema: official
+  - id: input_material_purity
+    label: Input Material Purity
+    type: string
+    required: true
+    description: The purity level of the starting elemental materials.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: melting_equipment
+    label: Melting Equipment
+    type: string
+    required: true
+    description: The instrument or furnace used to provide the heat for melting.
+    example_values:
+    - arc melter
+    - high-frequency induction heating
+    - electron beam melting equipment
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: true
+    description: The gas environment maintained during the melting process to prevent
+      oxidation or contamination.
+    example_values:
+    - inert atmosphere
+    - argon
+    status: official
+    source_schema: official
+  - id: crucible_material
+    label: Crucible Material
+    type: string
+    required: false
+    description: The material of the container (crucible) used to hold the materials
+      during melting.
+    example_values:
+    - quartz
+    status: official
+    source_schema: official
+  - id: melting_temperature
+    label: Melting Temperature
+    type: number
+    required: false
+    description: The temperature at which the materials were melted.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: melting_temperature_units
+    label: Melting Temperature Units
+    type: string
+    required: false
+    description: Units for melting_temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: melting_duration
+    label: Melting Duration
+    type: number
+    required: false
+    description: The amount of time the materials were held at melting temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: melting_duration_units
+    label: Melting Duration Units
+    type: string
+    required: false
+    description: Units for melting_duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_form
+    label: Output Form
+    type: string
+    required: false
+    description: The final physical form of the synthesized alloy (e.g., ingot).
+    example_values:
+    - master alloy ingot
+    - precursor alloy
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: annealing
+  label: Annealing
+  category_id: heat_treatment
+  category_label: Heat Treatment
+  hierarchy:
+  - HeatTreatment
+  - Annealing
+  definition: 'Heat treatment of a material at elevated temperatures for a specific
+    duration and atmosphere to modify its microstructure, such as inducing coarsening,
+    recovery, or modifying pore size.
+
+    Synonyms: thermal annealing, coarsening annealing, heat treatment'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: true
+    description: The temperature at which the annealing is performed.
+    example_values:
+    - 773 K
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The length of time the material is held at the annealing temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: true
+    description: The gas environment or vacuum condition maintained during the heat
+      treatment.
+    example_values:
+    - Argon
+    - air
+    - inert gas
+    - Vacuum
+    status: official
+    source_schema: official
+  - id: equipment
+    label: Equipment
+    type: string
+    required: false
+    description: The apparatus or furnace used to perform the annealing.
+    example_values:
+    - Furnace
+    status: official
+    source_schema: official
+  - id: gas_flow_rate
+    label: Gas Flow Rate
+    type: number
+    required: false
+    description: The rate at which the protective or reactive gas is flowed over the
+      sample.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: gas_flow_rate_units
+    label: Gas Flow Rate Units
+    type: string
+    required: false
+    description: Units for gas_flow_rate.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: heating_rate
+    label: Heating Rate
+    type: number
+    required: false
+    description: The speed at which the temperature is increased to reach the annealing
+      target.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: heating_rate_units
+    label: Heating Rate Units
+    type: string
+    required: false
+    description: Units for heating_rate.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: cooling_method
+    label: Cooling Method
+    type: string
+    required: false
+    description: The method used to cool the sample after the annealing duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_state
+    label: Input State
+    type: string
+    required: false
+    description: The state or condition of the sample before the annealing process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_state
+    label: Output State
+    type: string
+    required: false
+    description: The state or condition of the sample after the annealing process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: container
+    label: Container
+    type: string
+    required: false
+    description: The material or type of container used to hold the sample inside
+      the furnace.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: atomic_layer_deposition
+  label: Atomic Layer Deposition
+  category_id: thin_film_deposition
+  category_label: Thin Film Deposition
+  hierarchy:
+  - ThinFilmDeposition
+  - AtomicLayerDeposition
+  definition: 'A vapor phase deposition technique that uses sequential, self-limiting
+    surface reactions to deposit ultra-thin films with atomic-level thickness control.
+
+    Synonyms: ALD'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: number_of_cycles
+    label: Number Of Cycles
+    type: integer
+    required: true
+    description: The number of ALD cycles performed to achieve the desired film thickness.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: reactor_type
+    label: Reactor Type
+    type: string
+    required: false
+    description: The type of chemical reactor used for the ALD process.
+    example_values:
+    - continuous flow reactor
+    status: official
+    source_schema: official
+  - id: substrate
+    label: Substrate
+    type: string
+    required: true
+    description: The material or structure upon which the ALD layers are deposited.
+    example_values:
+    - nanoporous bulk materials
+    status: official
+    source_schema: official
+  - id: deposition_method
+    label: Deposition Method
+    type: string
+    required: false
+    description: Description of the chemical reaction mechanism used.
+    example_values:
+    - sequential, self-limiting surface reactions
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: ball_milling
+  label: Ball Milling
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - BallMilling
+  definition: 'A process of grinding or mixing materials using spherical balls in
+    a rotating or vibrating container to achieve particle size reduction, homogenization,
+    or mechanical alloying.
+
+    Synonyms: mechanical alloying, high energy ball milling, planetary ball milling'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: starting_materials
+    label: Starting Materials
+    type: string
+    required: true
+    description: The materials used as input for the milling process.
+    example_values:
+    - Al
+    - Pd
+    status: official
+    source_schema: official
+  - id: material_purity
+    label: Material Purity
+    type: string
+    required: false
+    description: The purity level of the starting material powders.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: material_particle_size
+    label: Material Particle Size
+    type: string
+    required: false
+    description: The initial particle size of the powders.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_composition
+    label: Target Composition
+    type: string
+    required: true
+    description: The intended chemical composition of the resulting alloy.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: true
+    description: The gas or vacuum environment inside the milling vial.
+    example_values:
+    - vacuum
+    status: official
+    source_schema: official
+  - id: ball_to_powder_ratio
+    label: Ball To Powder Ratio
+    type: number
+    required: true
+    description: The mass ratio of the grinding media (balls) to the process powder.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: ball_to_powder_ratio_units
+    label: Ball To Powder Ratio Units
+    type: string
+    required: false
+    description: Units for ball_to_powder_ratio.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: rotational_speed
+    label: Rotational Speed
+    type: number
+    required: true
+    description: The speed of rotation or vibration of the milling equipment.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: rotational_speed_units
+    label: Rotational Speed Units
+    type: string
+    required: false
+    description: The unit used to measure the rotational speed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The total time the materials were subjected to milling.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: The unit of time for the milling duration.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: blow_casting
+  label: Blow Casting
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - BlowCasting
+  definition: 'A metal casting process where a precursor alloy is shaped into a specific
+    geometry, such as a rod, using a blowing technique.
+
+    Synonyms: Blow casting'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: casting_technique
+    label: Casting Technique
+    type: string
+    required: true
+    description: The specific variant or technique of casting used.
+    example_values:
+    - blow casting
+    status: official
+    source_schema: official
+  - id: output_geometry
+    label: Output Geometry
+    type: string
+    required: true
+    description: The geometric shape of the produced part.
+    example_values:
+    - rod
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: chemical_dealloying
+  label: Chemical Dealloying
+  category_id: dealloying
+  category_label: Dealloying
+  hierarchy:
+  - Dealloying
+  - ChemicalDealloying
+  definition: 'The selective dissolution of a less noble component from an alloy using
+    a chemical solution (typically acid or base) under free corrosion conditions without
+    an external electrical drive.
+
+    Synonyms: chemical etching, selective leaching, free corrosion dealloying'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_formula
+    label: Electrolyte Formula
+    type: string
+    required: true
+    description: The chemical composition of the etching solution.
+    example_values:
+    - nitric acid
+    - HCl
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration
+    label: Electrolyte Concentration
+    type: string
+    required: true
+    description: The concentration of the electrolyte solution.
+    example_values:
+    - concentrated
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The length of time the alloy is immersed in the chemical solution.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: true
+    description: The temperature at which the chemical dealloying is performed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_state
+    label: Input State
+    type: string
+    required: false
+    description: The state or composition of the material before the dealloying process.
+    example_values:
+    - as-deposited film
+    status: official
+    source_schema: official
+  - id: output_state
+    label: Output State
+    type: string
+    required: false
+    description: The resulting state or morphology of the material after dealloying.
+    example_values:
+    - np-Au film
+    status: official
+    source_schema: official
+  - id: surfactant
+    label: Surfactant
+    type: string
+    required: false
+    description: Chemical additives used to modify the surface tension or stability
+      of the process.
+    example_values:
+    - CTAB
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: coating_process
+  label: Coating Process
+  category_id: electrode_assembly
+  category_label: Electrode Assembly
+  hierarchy:
+  - ElectrodeAssembly
+  - CoatingProcess
+  definition: 'The application of a material, such as a catalyst ink, onto a substrate
+    surface to form a functional layer.
+
+    Synonyms: drop casting, ink deposition, electrode coating'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: ink_volume
+    label: Ink Volume
+    type: number
+    required: true
+    description: The volume of the ink applied to the substrate.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: ink_volume_units
+    label: Ink Volume Units
+    type: string
+    required: true
+    description: The unit of measurement for the ink volume.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate_material
+    label: Substrate Material
+    type: string
+    required: true
+    description: The material composition of the substrate being coated.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate_diameter
+    label: Substrate Diameter
+    type: number
+    required: false
+    description: The diameter of the substrate.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate_diameter_units
+    label: Substrate Diameter Units
+    type: string
+    required: false
+    description: The unit of measurement for the substrate diameter.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: component_mounting
+  label: Component Mounting
+  category_id: sensor_assembly
+  category_label: Sensor Assembly
+  hierarchy:
+  - SensorAssembly
+  - ComponentMounting
+  definition: 'The process of fixing a component or device onto a substrate or support
+    structure to ensure stability or establish electrical connections.
+
+    Synonyms: mounting, component attachment, substrate mounting'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate
+    label: Substrate
+    type: string
+    required: true
+    description: The material or object onto which the component is mounted.
+    example_values:
+    - glass slide
+    status: official
+    source_schema: official
+  - id: contact_wires
+    label: Contact Wires
+    type: string
+    required: false
+    description: Wires used to provide electrical connectivity to the component during
+      or as part of the mounting process.
+    example_values:
+    - conducting wires
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: cutting
+  label: Cutting
+  category_id: mechanicaling
+  category_label: Mechanicaling
+  hierarchy:
+  - MechanicalProcessing
+  - Cutting
+  definition: 'The process of dividing a material or sample into smaller pieces, slices,
+    or specific geometries using mechanical or electrical means.
+
+    Synonyms: sample cutting, sectioning, slicing, dividing'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_geometry
+    label: Output Geometry
+    type: string
+    required: true
+    description: The resulting shape or geometric form of the sample after cutting.
+    example_values:
+    - cuboids
+    - plates
+    - disks
+    - slices
+    status: official
+    source_schema: official
+  - id: output_dimensions
+    label: Output Dimensions
+    type: number
+    required: true
+    description: The specific measurements (length, width, thickness, diameter) of
+      the cut sample.
+    example_values:
+    - 1 x 1 x 2 mm3
+    - ~4 mm
+    status: official
+    source_schema: official
+  - id: output_dimensions_units
+    label: Output Dimensions Units
+    type: string
+    required: false
+    description: Units for output_dimensions.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: cutting_tool
+    label: Cutting Tool
+    type: string
+    required: false
+    description: The instrument or equipment used to perform the cutting operation.
+    example_values:
+    - electric discharge machining
+    - diamond wire saw
+    status: official
+    source_schema: official
+  - id: input_material
+    label: Input Material
+    type: string
+    required: false
+    description: The material being processed.
+    example_values:
+    - Au-Ag alloy
+    status: official
+    source_schema: official
+  - id: input_state
+    label: Input State
+    type: string
+    required: false
+    description: The physical state or form of the material before the cutting process
+      (e.g., rolled, annealed, bulk).
+    example_values:
+    - Homogenized ingot
+    - Bulk alloy pellets
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: cyclic_voltammetry
+  label: Cyclic Voltammetry
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - CyclicVoltammetry
+  definition: 'An electrochemical measurement technique where the potential of a working
+    electrode is swept linearly with time and then reversed, used to determine potential
+    ranges or monitor redox behavior and resistance.
+
+    Synonyms: Cyclovoltammetric Scanning, CV'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate
+    label: Scan Rate
+    type: number
+    required: true
+    description: The rate at which the electrode potential is varied during the scan.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate_units
+    label: Scan Rate Units
+    type: string
+    required: true
+    description: The unit of measurement for the scan rate (e.g., mV/s).
+    example_values: []
+    status: official
+    source_schema: official
+  - id: purpose
+    label: Purpose
+    type: string
+    required: false
+    description: The objective of the scanning, such as determining potential ranges
+      or monitoring resistance.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: reference_electrode
+    label: Reference Electrode
+    type: string
+    required: true
+    description: The electrode used as a stable reference point for potential measurements.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: drying
+  label: Drying
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - Drying
+  definition: 'The process of removing a liquid medium from a sample, typically via
+    evaporation, air flow, or vacuum.
+
+    Synonyms: Air Drying, Vacuum Drying'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: drying_atmosphere
+    label: Drying Atmosphere
+    type: string
+    required: true
+    description: The gas or environment used to facilitate drying.
+    example_values:
+    - ambient air
+    - vacuum
+    - Argon
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: false
+    description: The length of time the sample is dried.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: false
+    description: The temperature during the drying process.
+    example_values:
+    - room temperature
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: equipment
+    label: Equipment
+    type: string
+    required: false
+    description: The device used to perform drying (e.g., vacuum oven).
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_state
+    label: Output State
+    type: string
+    required: false
+    description: The state of the sample after drying.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrical_contacting
+  label: Electrical Contacting
+  category_id: sensor_assembly
+  category_label: Sensor Assembly
+  hierarchy:
+  - SensorAssembly
+  - ElectricalContacting
+  definition: 'The process of establishing a conductive electrical connection between
+    two or more components using a conductive medium such as paint, adhesive, or solder.
+
+    Synonyms: Electrical Connection, Conductive Contacting'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: contacting_agent
+    label: Contacting Agent
+    type: string
+    required: true
+    description: The material used to create the electrical contact between components.
+    example_values:
+    - silver paint
+    status: official
+    source_schema: official
+  - id: contact_agent_manufacturer
+    label: Contact Agent Manufacturer
+    type: string
+    required: false
+    description: The manufacturer of the conductive material used for contacting.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrochemical_activation
+  label: Electrochemical Activation
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - ElectrochemicalActivation
+  definition: 'The use of electrical potential in an electrolyte solution to remove
+    surface oxides or modify the surface state of a sample, often using techniques
+    like cyclic voltammetry, to prepare it for subsequent experiments.
+
+    Synonyms: Electrochemical reduction, Electrochemical cleaning, Electrochemical
+    surface preparation'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_formula
+    label: Electrolyte Formula
+    type: string
+    required: true
+    description: Chemical formula of the electrolyte used for activation
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration
+    label: Electrolyte Concentration
+    type: string
+    required: true
+    description: Concentration of the electrolyte used for activation
+    example_values: []
+    status: official
+    source_schema: official
+  - id: reference_electrode
+    label: Reference Electrode
+    type: string
+    required: true
+    description: Reference electrode used during activation
+    example_values: []
+    status: official
+    source_schema: official
+  - id: counter_electrode
+    label: Counter Electrode
+    type: string
+    required: true
+    description: Counter electrode used during activation
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range
+    label: Potential Range
+    type: string
+    required: true
+    description: The range of electrical potentials applied during the activation
+      process
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate
+    label: Scan Rate
+    type: number
+    required: true
+    description: The rate at which the potential is scanned during cyclic voltammetry
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate_units
+    label: Scan Rate Units
+    type: string
+    required: false
+    description: Units for scan_rate.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: false
+    description: Temperature at which the activation process is performed
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: Total time duration of the activation process
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrochemical_charging
+  label: Electrochemical Charging
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - ElectrochemicalCharging
+  definition: 'The process of applying an electrical potential to a material surface
+    immersed in an electrolyte to modify its charge state or electrical properties,
+    such as resistance.
+
+    Synonyms: electrochemical charging, surface charging'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte
+    label: Electrolyte
+    type: string
+    required: true
+    description: The chemical composition of the electrolyte used during the charging
+      process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration
+    label: Electrolyte Concentration
+    type: string
+    required: true
+    description: The concentration of the electrolyte solution.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potentiostat_model
+    label: Potentiostat Model
+    type: string
+    required: false
+    description: The model or brand of the potentiostat used to apply the voltage.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range
+    label: Potential Range
+    type: string
+    required: true
+    description: The range of electrical potential applied during the charging process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: voltage_step
+    label: Voltage Step
+    type: number
+    required: false
+    description: The increment size of the voltage applied in a stepped charging process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: voltage_step_units
+    label: Voltage Step Units
+    type: string
+    required: false
+    description: The unit of measurement for the voltage step.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: time_interval
+    label: Time Interval
+    type: number
+    required: false
+    description: The duration of time spent at each voltage step.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: time_interval_units
+    label: Time Interval Units
+    type: string
+    required: false
+    description: Units for time_interval.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: charging_regime
+    label: Charging Regime
+    type: string
+    required: false
+    description: The electrochemical regime of charging (e.g., double layer charging
+      or chemisorption).
+    example_values:
+    - double layer
+    - chemisorption
+    status: official
+    source_schema: official
+  - id: reference_electrode
+    label: Reference Electrode
+    type: string
+    required: true
+    description: The electrode used as a stable reference potential.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: counter_electrode
+    label: Counter Electrode
+    type: string
+    required: true
+    description: The electrode that completes the circuit to allow current to flow.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: measurement_method
+    label: Measurement Method
+    type: string
+    required: true
+    description: The specific electrochemical method used for charging (e.g., chronoamperometry,
+      cyclic voltammetry).
+    example_values:
+    - chronoamperometric
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrochemical_dealloying
+  label: Electrochemical Dealloying
+  category_id: dealloying
+  category_label: Dealloying
+  hierarchy:
+  - Dealloying
+  - ElectrochemicalDealloying
+  definition: 'The selective dissolution of a less noble component from an alloy using
+    an external electric potential or current to control the leaching process and
+    create a nanoporous structure.
+
+    Synonyms: electrochemical etching, potentiostatic dealloying, galvanostatic dealloying,
+    pulse electrochemical dealloying'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential
+    label: Potential
+    type: number
+    required: true
+    description: The applied electrochemical potential or voltage range used to drive
+      the dissolution.
+    example_values:
+    - 650 mV
+    - 1.0 V
+    status: official
+    source_schema: official
+  - id: potential_units
+    label: Potential Units
+    type: string
+    required: false
+    description: Units for potential.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: control_mode
+    label: Control Mode
+    type: string
+    required: true
+    description: The mode of electrochemical control (e.g., constant potential or
+      constant current).
+    example_values:
+    - Potentiostatic
+    - galvanostatic
+    status: official
+    source_schema: official
+  - id: reference_electrode
+    label: Reference Electrode
+    type: string
+    required: true
+    description: The electrode used as a stable reference to measure and control the
+      applied potential.
+    example_values:
+    - Ag/AgCl
+    status: official
+    source_schema: official
+  - id: counter_electrode
+    label: Counter Electrode
+    type: string
+    required: true
+    description: The electrode that completes the electrical circuit in the electrochemical
+      cell.
+    example_values:
+    - platinum wire
+    - Silver wire
+    status: official
+    source_schema: official
+  - id: working_electrode
+    label: Working Electrode
+    type: string
+    required: false
+    description: The electrode consisting of the alloy sample being dealloyed.
+    example_values:
+    - alloy sheet
+    status: official
+    source_schema: official
+  - id: electrolyte_formula
+    label: Electrolyte Formula
+    type: string
+    required: true
+    description: The chemical composition of the electrolyte solution.
+    example_values:
+    - HClO4
+    - HNO3
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration
+    label: Electrolyte Concentration
+    type: string
+    required: true
+    description: The concentration of the electrolyte used.
+    example_values:
+    - 1 M
+    - 70% stock
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The total time the sample is subjected to the electrochemical process.
+    example_values:
+    - 17 h
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: current_threshold
+    label: Current Threshold
+    type: number
+    required: false
+    description: The electrical current value used as a criterion to stop the process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: current_threshold_units
+    label: Current Threshold Units
+    type: string
+    required: false
+    description: Units for current_threshold.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: pulse_on_time
+    label: Pulse On Time
+    type: number
+    required: false
+    description: The duration of the 'on' cycle in pulse electrochemical dealloying.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: pulse_on_time_units
+    label: Pulse On Time Units
+    type: string
+    required: false
+    description: Units for pulse_on_time.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: pulse_off_time
+    label: Pulse Off Time
+    type: number
+    required: false
+    description: The duration of the 'off' cycle in pulse electrochemical dealloying.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: pulse_off_time_units
+    label: Pulse Off Time Units
+    type: string
+    required: false
+    description: Units for pulse_off_time.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrochemical_polymerization
+  label: Electrochemical Polymerization
+  category_id: surface_coating
+  category_label: Surface Coating
+  hierarchy:
+  - SurfaceCoating
+  - ElectrochemicalPolymerization
+  definition: 'The process of using an electric current to induce the polymerization
+    of a monomer onto a conductive substrate, creating a polymer layer.
+
+    Synonyms: electropolymerization, electrochemical growth of polymers'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: control_mode
+    label: Control Mode
+    type: string
+    required: true
+    description: The electrical control mode (e.g., potentiostatic, galvanostatic,
+      or potentiodynamic) used for polymerization.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range
+    label: Potential Range
+    type: string
+    required: true
+    description: The range of electrical potentials applied during the polymerization
+      process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: number_of_cycles
+    label: Number Of Cycles
+    type: integer
+    required: false
+    description: The number of potential cycles performed, typically in the case of
+      cyclic voltammetry polymerization.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The total time elapsed during the polymerization process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_thickness
+    label: Output Thickness
+    type: number
+    required: false
+    description: The target or resulting thickness of the polymer layer deposited
+      on the surface.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_thickness_units
+    label: Output Thickness Units
+    type: string
+    required: false
+    description: Units for output_thickness.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: monomer
+    label: Monomer
+    type: string
+    required: true
+    description: The chemical species (monomer) that is polymerized during the process.
+    example_values:
+    - polypyrrole (PPy)
+    status: official
+    source_schema: official
+  - id: electrolyte
+    label: Electrolyte
+    type: string
+    required: true
+    description: The solution containing ions used to conduct electricity during polymerization.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrochemical_reduction
+  label: Electrochemical Reduction
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - ElectrochemicalReduction
+  definition: 'The use of an electrochemical cell to induce the reduction of a sample,
+    often utilizing techniques such as potential cycling to modify structural characteristics.
+
+    Synonyms: Electrochemical Potential Cycling, Potential Cycling Reduction'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_formula
+    label: Electrolyte Formula
+    type: string
+    required: true
+    description: Chemical formula of the electrolyte used
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration
+    label: Electrolyte Concentration
+    type: string
+    required: true
+    description: Concentration of the electrolyte
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration_unit
+    label: Electrolyte Concentration Unit
+    type: string
+    required: true
+    description: Unit of electrolyte concentration
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range_min
+    label: Potential Range Min
+    type: number
+    required: true
+    description: Minimum potential applied during cycling
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range_min_units
+    label: Potential Range Min Units
+    type: string
+    required: false
+    description: Units for potential_range_min.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range_max
+    label: Potential Range Max
+    type: number
+    required: true
+    description: Maximum potential applied during cycling
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range_max_units
+    label: Potential Range Max Units
+    type: string
+    required: false
+    description: Units for potential_range_max.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: cycle_count
+    label: Cycle Count
+    type: integer
+    required: true
+    description: Number of potential cycles performed
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate
+    label: Scan Rate
+    type: number
+    required: true
+    description: Scan rate of the potential cycling
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate_unit
+    label: Scan Rate Unit
+    type: string
+    required: true
+    description: Unit of scan rate
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potentiostat_model
+    label: Potentiostat Model
+    type: string
+    required: false
+    description: Model of the potentiostat used
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potentiostat_manufacturer
+    label: Potentiostat Manufacturer
+    type: string
+    required: false
+    description: Manufacturer of the potentiostat
+    example_values: []
+    status: official
+    source_schema: official
+  - id: reference_electrode
+    label: Reference Electrode
+    type: string
+    required: true
+    description: Reference electrode used
+    example_values: []
+    status: official
+    source_schema: official
+  - id: counter_electrode
+    label: Counter Electrode
+    type: string
+    required: true
+    description: Counter electrode used
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_purity
+    label: Electrolyte Purity
+    type: string
+    required: false
+    description: Purity of the electrolyte
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_supplier
+    label: Electrolyte Supplier
+    type: string
+    required: false
+    description: Supplier of the electrolyte
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_ligament_diameter
+    label: Output Ligament Diameter
+    type: number
+    required: false
+    description: Resulting mean ligament diameter of the reduced sample
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_ligament_diameter_units
+    label: Output Ligament Diameter Units
+    type: string
+    required: false
+    description: Units for output_ligament_diameter.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrochemical_surface_cleaning
+  label: Electrochemical Surface Cleaning
+  category_id: surface_treatment
+  category_label: Surface Treatment
+  hierarchy:
+  - SurfaceTreatment
+  - ElectrochemicalSurfaceCleaning
+  definition: 'Removal of surface contaminants or oxides by applying an electrical
+    potential or cycling potentials in an electrolyte.
+
+    Synonyms: electrochemical cleaning, potential cycling cleaning'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: number_of_cycles
+    label: Number Of Cycles
+    type: integer
+    required: true
+    description: The number of times the potential is cycled to clean the surface.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range
+    label: Potential Range
+    type: string
+    required: true
+    description: The voltage range over which the potential is cycled.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate
+    label: Scan Rate
+    type: number
+    required: true
+    description: The speed at which the potential is varied during the cleaning cycle.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate_units
+    label: Scan Rate Units
+    type: string
+    required: true
+    description: The unit of measurement for the scan rate.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: electrolyte_preparation
+  label: Electrolyte Preparation
+  category_id: precursor_preparation
+  category_label: Precursor Preparation
+  hierarchy:
+  - PrecursorPreparation
+  - ElectrolytePreparation
+  definition: 'The process of preparing a chemical solution used as an electrolyte,
+    typically involving mixing solvents, solutes, and additives to achieve specific
+    concentrations.
+
+    Synonyms: electrolyte solution preparation, mixing electrolyte'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_formula
+    label: Electrolyte Formula
+    type: string
+    required: true
+    description: The chemical composition or formula of the electrolyte solution.
+    example_values:
+    - HNO 3 and H2O
+    - sulfuric acid
+    status: official
+    source_schema: official
+  - id: concentration
+    label: Concentration
+    type: string
+    required: true
+    description: The concentration of the primary chemical component in the electrolyte.
+    example_values:
+    - 70% stock solution
+    status: official
+    source_schema: official
+  - id: volume
+    label: Volume
+    type: number
+    required: true
+    description: The volume of the components used to prepare the solution.
+    example_values:
+    - 30 ml (HNO3) + 60 ml (H2O)
+    status: official
+    source_schema: official
+  - id: volume_units
+    label: Volume Units
+    type: string
+    required: false
+    description: Units for volume.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: surfactant_list
+    label: Surfactant List
+    type: string
+    required: false
+    description: List of surfactants added to the electrolyte solution.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: encapsulation
+  label: Encapsulation
+  category_id: sensor_assembly
+  category_label: Sensor Assembly
+  hierarchy:
+  - SensorAssembly
+  - Encapsulation
+  definition: 'The process of sealing a device, component, or sensor within a protective
+    enclosure or chamber to isolate it from the external environment or to facilitate
+    a controlled environment.
+
+    Synonyms: sealing, enclosure, device packaging'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: enclosure_material
+    label: Enclosure Material
+    type: string
+    required: true
+    description: The material used to construct the sealing enclosure or chamber.
+    example_values:
+    - glass
+    status: official
+    source_schema: official
+  - id: enclosure_features
+    label: Enclosure Features
+    type: string
+    required: false
+    description: Specific design features of the enclosure, such as ports, inlets,
+      or outlets.
+    example_values:
+    - gas inlet/outlet
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: film_deposition
+  label: Film Deposition
+  category_id: film_fabrication
+  category_label: Film Fabrication
+  hierarchy:
+  - FilmFabrication
+  - FilmDeposition
+  definition: 'The process of applying a thin layer of material onto a substrate surface.
+
+    Synonyms: thin film deposition, layer deposition'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate_material
+    label: Substrate Material
+    type: string
+    required: true
+    description: The material of the substrate upon which the film is deposited.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: barrier_layer_thickness
+    label: Barrier Layer Thickness
+    type: number
+    required: false
+    description: The thickness of the diffusion barrier layer on the substrate.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: barrier_layer_thickness_units
+    label: Barrier Layer Thickness Units
+    type: string
+    required: false
+    description: Units for barrier_layer_thickness.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deposited_material
+    label: Deposited Material
+    type: string
+    required: true
+    description: The material being deposited to form the film.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deposited_composition
+    label: Deposited Composition
+    type: string
+    required: false
+    description: The atomic or weight percentage composition of the deposited material.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deposition_tool
+    label: Deposition Tool
+    type: string
+    required: true
+    description: The equipment used to perform the deposition.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: flattening
+  label: Flattening
+  category_id: surface_treatment
+  category_label: Surface Treatment
+  hierarchy:
+  - SurfaceTreatment
+  - Flattening
+  definition: 'The process of applying pressure or force using a smooth surface to
+    flatten and planarize a coated layer or material surface.
+
+    Synonyms: planarization, surface flattening, smoothing'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: tool
+    label: Tool
+    type: string
+    required: true
+    description: The tool or smooth surface used to apply pressure for flattening.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_thickness
+    label: Output Thickness
+    type: number
+    required: true
+    description: The target thickness of the layer achieved after the flattening process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_thickness_units
+    label: Output Thickness Units
+    type: string
+    required: true
+    description: The unit of measurement for the output thickness.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: free_corrosion_dealloying
+  label: Free Corrosion Dealloying
+  category_id: dealloying
+  category_label: Dealloying
+  hierarchy:
+  - Dealloying
+  - FreeCorrosionDealloying
+  definition: 'Removal of a selective component from an alloy through immersion in
+    an electrolyte without the application of an external electrical potential.
+
+    Synonyms: chemical dealloying, spontaneous dealloying, free corrosion'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_formula
+    label: Electrolyte Formula
+    type: string
+    required: true
+    description: The chemical composition or formula of the electrolyte used for immersion.
+    example_values:
+    - concentrated nitric acid
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration
+    label: Electrolyte Concentration
+    type: string
+    required: true
+    description: The concentration of the electrolyte solution.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration_unit
+    label: Electrolyte Concentration Unit
+    type: string
+    required: false
+    description: The unit used to measure the electrolyte concentration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The length of time the sample was immersed in the electrolyte.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: The unit of time for the immersion duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: false
+    description: The temperature at which the immersion process was conducted.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: The unit of temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: heat_treatment_proc
+  label: Heat Treatment Proc
+  category_id: thermal_treatment
+  category_label: Thermal Treatment
+  hierarchy:
+  - ThermalTreatment
+  - HeatTreatmentProc
+  definition: 'The process of heating and cooling a material to a specific temperature
+    and duration to change its physical or chemical properties, such as relieving
+    internal stress.
+
+    Synonyms: Thermal treatment, Thermal stress relief'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: true
+    description: The temperature at which the heat treatment is performed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: true
+    description: The unit of measurement for the heat treatment temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The length of time the material is held at the specified temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: true
+    description: The unit of measurement for the heat treatment duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: false
+    description: The gas environment surrounding the sample during treatment.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: hydrogen_treatment
+  label: Hydrogen Treatment
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - HydrogenTreatment
+  definition: 'Exposure of a material to a hydrogen-containing atmosphere, potentially
+    in a cyclic manner, to evaluate its response or modify its hydride content.
+
+    Synonyms: hydrogen exposure, hydrogenation treatment'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: hydrogen_content
+    label: Hydrogen Content
+    type: string
+    required: true
+    description: The concentration or partial pressure of hydrogen in the treatment
+      atmosphere.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere_composition
+    label: Atmosphere Composition
+    type: string
+    required: true
+    description: The overall composition of the gas atmosphere used during the treatment.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: exposure_sequence
+    label: Exposure Sequence
+    type: string
+    required: false
+    description: The order or pattern of changes in hydrogen content or atmospheric
+      conditions during cyclic exposure.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: lithography
+  label: Lithography
+  category_id: patterning
+  category_label: Patterning
+  hierarchy:
+  - Patterning
+  - Lithography
+  definition: 'A process of patterning a substrate or resist to create specific geometric
+    shapes, often using a beam of light or electrons.
+
+    Synonyms: Electron beam lithography, E-beam lithography, Patterning'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: tool
+    label: Tool
+    type: string
+    required: true
+    description: The lithography technique or instrument used to create the pattern.
+    example_values:
+    - electron beam
+    status: official
+    source_schema: official
+  - id: pattern_shape
+    label: Pattern Shape
+    type: string
+    required: true
+    description: The geometric shape of the fabricated specimen or pattern.
+    example_values:
+    - dog-bone
+    status: official
+    source_schema: official
+  - id: gauge_length
+    label: Gauge Length
+    type: number
+    required: false
+    description: The length of the gauge section of the specimen.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: gauge_length_units
+    label: Gauge Length Units
+    type: string
+    required: false
+    description: The unit of measurement for the gauge length.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: width
+    label: Width
+    type: number
+    required: false
+    description: The width of the specimen or pattern.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: width_units
+    label: Width Units
+    type: string
+    required: false
+    description: The unit of measurement for the width.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: mechanical_grinding
+  label: Mechanical Grinding
+  category_id: mechanicaling
+  category_label: Mechanicaling
+  hierarchy:
+  - MechanicalProcessing
+  - MechanicalGrinding
+  definition: 'The process of reducing the bulk size of a material into smaller particles
+    or a powder form through mechanical force.
+
+    Synonyms: pulverization, size reduction, milling'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_material_state
+    label: Target Material State
+    type: string
+    required: true
+    description: The physical state or particle size of the material after the grinding
+      process.
+    example_values:
+    - fine powder
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: mechanical_surface_cleaning
+  label: Mechanical Surface Cleaning
+  category_id: cleaning
+  category_label: Cleaning
+  hierarchy:
+  - Cleaning
+  - MechanicalSurfaceCleaning
+  definition: 'Removal of surface contaminants, such as oxide scales, using physical
+    or mechanical force.
+
+    Synonyms: mechanical cleaning, physical surface cleaning'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_state
+    label: Input State
+    type: string
+    required: true
+    description: The state or condition of the sample surface before the cleaning
+      process.
+    example_values:
+    - oxide covered
+    status: official
+    source_schema: official
+  - id: cleaning_method
+    label: Cleaning Method
+    type: string
+    required: true
+    description: The specific mechanical technique used to remove the surface layer.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: melt_spinning
+  label: Melt Spinning
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - MeltSpinning
+  definition: 'A process of rapid solidification where a molten material is ejected
+    onto a rotating cold disk or roller to produce thin ribbons or flakes with a controlled
+    microstructure (often amorphous or fine-grained).
+
+    Synonyms: melt-spinning, rapid solidification spinning'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: rotation_speed
+    label: Rotation Speed
+    type: number
+    required: true
+    description: The angular or linear speed of the rotating roller during the spinning
+      process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: rotation_speed_units
+    label: Rotation Speed Units
+    type: string
+    required: false
+    description: Units for rotation_speed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: roller_diameter
+    label: Roller Diameter
+    type: number
+    required: true
+    description: The diameter of the rotating copper or metal roller used for quenching
+      the melt.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: roller_diameter_units
+    label: Roller Diameter Units
+    type: string
+    required: false
+    description: Units for roller_diameter.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_material
+    label: Input Material
+    type: string
+    required: true
+    description: The chemical composition or identity of the alloy/material being
+      spun.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: false
+    description: The gaseous environment maintained during the spinning process to
+      prevent oxidation.
+    example_values:
+    - argon
+    status: official
+    source_schema: official
+  - id: output_geometry
+    label: Output Geometry
+    type: string
+    required: false
+    description: The physical form or dimensions of the resulting solidified material.
+    example_values:
+    - ribbons
+    status: official
+    source_schema: official
+  - id: roller_material
+    label: Roller Material
+    type: string
+    required: false
+    description: The material of the rotating roller used for cooling.
+    example_values:
+    - copper
+    status: official
+    source_schema: official
+  - id: heating_method
+    label: Heating Method
+    type: string
+    required: false
+    description: The method used to melt the pre-alloyed ingot before spinning.
+    example_values:
+    - induction heating
+    status: official
+    source_schema: official
+  - id: tube_material
+    label: Tube Material
+    type: string
+    required: false
+    description: The material of the crucible or tube holding the melt.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: equipment
+    label: Equipment
+    type: string
+    required: false
+    description: The specific apparatus or model of the melt spinner.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: mixing
+  label: Mixing
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - Mixing
+  definition: 'The process of combining multiple components, such as powders, solvents,
+    and binders, to create a uniform mixture or suspension.
+
+    Synonyms: dispersion preparation, suspension preparation, blending'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: solvent_volume
+    label: Solvent Volume
+    type: number
+    required: true
+    description: The volume of the solvent used in the mixing process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: solvent_volume_units
+    label: Solvent Volume Units
+    type: string
+    required: true
+    description: The unit of measurement for the solvent volume.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: binder_volume
+    label: Binder Volume
+    type: number
+    required: true
+    description: The volume of the binder solution added.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: binder_volume_units
+    label: Binder Volume Units
+    type: string
+    required: false
+    description: Units for binder_volume.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: binder_concentration
+    label: Binder Concentration
+    type: string
+    required: false
+    description: The concentration of the binder solution used.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: mixing_equipment
+    label: Mixing Equipment
+    type: string
+    required: true
+    description: The tool or instrument used to perform the mixing operation.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: polishing
+  label: Polishing
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - Polishing
+  definition: 'The mechanical process of smoothing or refining a material surface
+    using abrasive agents to achieve a specific finish, planarity, or cleanliness.
+
+    Synonyms: surface polishing, mechanical abrasion, surface preparation'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: abrasive_material
+    label: Abrasive Material
+    type: string
+    required: true
+    description: The substance or tool used to perform the abrasive polishing.
+    example_values:
+    - abrasive pastes
+    - powders
+    - SiC paper
+    status: official
+    source_schema: official
+  - id: abrasive_grit_size
+    label: Abrasive Grit Size
+    type: number
+    required: true
+    description: The particle size or grit grade of the abrasive material.
+    example_values:
+    - 1 um
+    status: official
+    source_schema: official
+  - id: abrasive_grit_size_units
+    label: Abrasive Grit Size Units
+    type: string
+    required: false
+    description: Units for abrasive_grit_size.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_surface_finish
+    label: Target Surface Finish
+    type: string
+    required: false
+    description: The desired final state of the surface (e.g., mirror finish, specific
+      roughness).
+    example_values:
+    - diamond finish
+    status: official
+    source_schema: official
+  - id: polished_region
+    label: Polished Region
+    type: string
+    required: false
+    description: The specific area or face of the sample that underwent polishing.
+    example_values:
+    - one side
+    status: official
+    source_schema: official
+  - id: substrate_material
+    label: Substrate Material
+    type: string
+    required: false
+    description: The material of the sample being polished.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: potential_cycling
+  label: Potential Cycling
+  category_id: electrochemical_conditioning
+  category_label: Electrochemical Conditioning
+  hierarchy:
+  - ElectrochemicalConditioning
+  - PotentialCycling
+  definition: 'The process of repeatedly cycling the electrical potential of an electrode
+    between specific values to stabilize the material, remove impurities, or prepare
+    the sample for subsequent measurements.
+
+    Synonyms: electrochemical cycling, voltage cycling, potential scan cycling'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: cycle_count
+    label: Cycle Count
+    type: integer
+    required: true
+    description: The number of complete potential cycles performed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: potential_range
+    label: Potential Range
+    type: string
+    required: true
+    description: The range of potential values applied during the cycling.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: reference_electrode
+    label: Reference Electrode
+    type: string
+    required: true
+    description: The electrode used as a reference point for the applied potential.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate
+    label: Scan Rate
+    type: number
+    required: true
+    description: The rate at which the potential is varied.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: scan_rate_units
+    label: Scan Rate Units
+    type: string
+    required: true
+    description: The unit of measurement for the scan rate (e.g., mV/s).
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte
+    label: Electrolyte
+    type: string
+    required: true
+    description: The chemical composition of the electrolyte used during cycling.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: electrolyte_concentration
+    label: Electrolyte Concentration
+    type: string
+    required: true
+    description: The concentration of the electrolyte solution.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: protective_coating_application
+  label: Protective Coating Application
+  category_id: sample_preparation
+  category_label: Sample Preparation
+  hierarchy:
+  - SamplePreparation
+  - ProtectiveCoatingApplication
+  definition: 'The process of applying a protective layer (such as a lacquer or polymer)
+    to specific areas of a sample to protect it, secure it, or isolate it during subsequent
+    processing steps.
+
+    Synonyms: protective coating, lacquer coating, sample edging, edge protection'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: coating_material
+    label: Coating Material
+    type: string
+    required: true
+    description: The material used to create the protective layer.
+    example_values:
+    - lacquer
+    status: official
+    source_schema: official
+  - id: coating_location
+    label: Coating Location
+    type: string
+    required: true
+    description: The specific area or region of the sample where the coating is applied.
+    example_values:
+    - borders of the film samples
+    status: official
+    source_schema: official
+  - id: coating_purpose
+    label: Coating Purpose
+    type: string
+    required: false
+    description: The intended goal or reason for applying the protective coating.
+    example_values:
+    - secure them during processing
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: quenching
+  label: Quenching
+  category_id: heat_treatment
+  category_label: Heat Treatment
+  hierarchy:
+  - HeatTreatment
+  - Quenching
+  definition: 'The process of rapidly cooling a material, typically from an elevated
+    temperature, to preserve a specific microstructure or phase.
+
+    Synonyms: water quenching, rapid cooling'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: quenching_medium
+    label: Quenching Medium
+    type: string
+    required: true
+    description: The medium used to rapidly cool the material.
+    example_values:
+    - water
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: resin_impregnation
+  label: Resin Impregnation
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - ResinImpregnation
+  definition: 'The process of infiltrating a sample with a resin, often under vacuum,
+    to stabilize the material or provide structural support for subsequent processing
+    such as sectioning.
+
+    Synonyms: epoxy impregnation, vacuum impregnation, resin infiltration'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: impregnation_medium
+    label: Impregnation Medium
+    type: string
+    required: true
+    description: The resin or medium used to infiltrate the sample.
+    example_values:
+    - epoxy resin
+    status: official
+    source_schema: official
+  - id: curing_temperature
+    label: Curing Temperature
+    type: number
+    required: true
+    description: The temperature at which the impregnated sample is cured to harden
+      the resin.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: curing_temperature_units
+    label: Curing Temperature Units
+    type: string
+    required: true
+    description: The unit of measurement for the curing temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: curing_duration
+    label: Curing Duration
+    type: number
+    required: true
+    description: The length of time the sample is kept at the curing temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: curing_duration_units
+    label: Curing Duration Units
+    type: string
+    required: true
+    description: The unit of measurement for the curing duration.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: rinsing
+  label: Rinsing
+  category_id: cleaning
+  category_label: Cleaning
+  hierarchy:
+  - Cleaning
+  - Rinsing
+  definition: 'The process of washing a sample with a liquid medium to remove residual
+    chemicals, electrolytes, or contaminants from the surface or structure.
+
+    Synonyms: Washing, Cleaning (liquid), Soaking'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: rinsing_medium
+    label: Rinsing Medium
+    type: string
+    required: true
+    description: The liquid solvent used to rinse the sample.
+    example_values:
+    - distilled water
+    - ethanol
+    - ultrapure water
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: false
+    description: The length of time the sample is rinsed or soaked.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: medium_concentration
+    label: Medium Concentration
+    type: string
+    required: false
+    description: The concentration of the rinsing agent in the medium.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_state
+    label: Input State
+    type: string
+    required: false
+    description: The state of the sample before the rinsing process.
+    example_values:
+    - as-dealloyed
+    status: official
+    source_schema: official
+  - id: output_state
+    label: Output State
+    type: string
+    required: false
+    description: The state of the sample after the rinsing process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: false
+    description: The temperature of the rinsing medium.
+    example_values:
+    - boiling
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: rolling
+  label: Rolling
+  category_id: mechanicaling
+  category_label: Mechanicaling
+  hierarchy:
+  - MechanicalProcessing
+  - Rolling
+  definition: 'The process of reducing the thickness of a material (such as an alloy
+    ingot or sheet) by passing it through rollers or applying mechanical compression
+    to achieve a target thickness and refine the material''s structure.
+
+    Synonyms: cold rolling, hot rolling, mechanical deformation, cold working, pressing'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_thickness
+    label: Target Thickness
+    type: number
+    required: true
+    description: The intended or resulting thickness of the material after the deformation
+      process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_thickness_units
+    label: Target Thickness Units
+    type: string
+    required: true
+    description: The unit of measurement for the target thickness.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: material_state
+    label: Material State
+    type: string
+    required: true
+    description: The state or condition of the material during the process, such as
+      'cold' or 'homogenized'.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: equipment
+    label: Equipment
+    type: string
+    required: false
+    description: The specific hardware or machine used to perform the deformation
+      (e.g., rolling mill, press).
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_geometry
+    label: Output Geometry
+    type: string
+    required: false
+    description: The geometric shape of the material after processing, typically sheets.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: number_of_steps
+    label: Number Of Steps
+    type: integer
+    required: false
+    description: The number of individual rolling or pressing passes performed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deformation_frequency
+    label: Deformation Frequency
+    type: number
+    required: false
+    description: The frequency or pattern of the cold working cycles.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deformation_frequency_units
+    label: Deformation Frequency Units
+    type: string
+    required: false
+    description: Units for deformation_frequency.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: sample_cutting
+  label: Sample Cutting
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - SampleCutting
+  definition: 'The process of dividing a bulk material into smaller pieces or specific
+    shapes to prepare samples for subsequent experimental analysis.
+
+    Synonyms: sectioning, dicing, cutting'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sample_shape
+    label: Sample Shape
+    type: string
+    required: true
+    description: The geometric shape of the resulting cut samples.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: sample_stabilization
+  label: Sample Stabilization
+  category_id: posting
+  category_label: Posting
+  hierarchy:
+  - PostProcessing
+  - SampleStabilization
+  definition: 'The process of immersing a sample in a specific medium to stabilize
+    its chemical or physical state, typically to prevent unwanted reactions such as
+    oxidation or combustion.
+
+    Synonyms: Stabilization, Quenching, Dipping stabilization'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: immersion_medium
+    label: Immersion Medium
+    type: string
+    required: true
+    description: The substance used to immerse the sample for stabilization.
+    example_values:
+    - distilled water
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: false
+    description: The length of time the sample remains in the stabilization medium.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: The unit of time used for the duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: purpose
+    label: Purpose
+    type: string
+    required: true
+    description: The specific goal of the stabilization step (e.g., preventing oxidation).
+    example_values:
+    - prevent oxidation or combustion of the porous Pd
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: sintering
+  label: Sintering
+  category_id: sintering
+  category_label: Sintering
+  hierarchy:
+  - Sintering
+  - Sintering
+  definition: 'The process of compacting and forming a solid mass of material by heat
+    or pressure without melting it to the point of liquefaction.
+
+    Synonyms: thermal bonding, sintering process'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_temperature
+    label: Sintering Temperature
+    type: number
+    required: true
+    description: The temperature maintained during the sintering process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_temperature_units
+    label: Sintering Temperature Units
+    type: string
+    required: false
+    description: Units for sintering_temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_duration
+    label: Sintering Duration
+    type: number
+    required: true
+    description: The total time the material is held at the sintering temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_duration_units
+    label: Sintering Duration Units
+    type: string
+    required: false
+    description: Units for sintering_duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate
+    label: Substrate
+    type: string
+    required: false
+    description: The base material onto which the slurry is applied before sintering.
+    example_values:
+    - paper sheet
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: slurry_preparation
+  label: Slurry Preparation
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - SlurryPreparation
+  definition: 'The process of mixing a powdered material with a binder to create a
+    slurry for subsequent application.
+
+    Synonyms: slurry preparation, powder mixing'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: material
+    label: Material
+    type: string
+    required: true
+    description: The primary material used to form the slurry.
+    example_values:
+    - metal powder
+    status: official
+    source_schema: official
+  - id: binder_type
+    label: Binder Type
+    type: string
+    required: true
+    description: The type of binder used to hold the powder particles together.
+    example_values:
+    - water-soluble binder
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: spark_plasma_sintering
+  label: Spark Plasma Sintering
+  category_id: sintering
+  category_label: Sintering
+  hierarchy:
+  - Sintering
+  - SparkPlasmaSintering
+  definition: 'A field-assisted sintering technique that utilizes pulsed direct current
+    and uniaxial pressure to rapidly consolidate powder into a dense solid.
+
+    Synonyms: SPS, Field Assisted Sintering Technique, FAST'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_temperature
+    label: Sintering Temperature
+    type: number
+    required: true
+    description: The target or maximum temperature reached during the sintering process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_temperature_units
+    label: Sintering Temperature Units
+    type: string
+    required: true
+    description: Unit of measurement for the temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_duration
+    label: Sintering Duration
+    type: number
+    required: true
+    description: The total time the material is held at the sintering temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_duration_units
+    label: Sintering Duration Units
+    type: string
+    required: false
+    description: Units for sintering_duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate
+    label: Substrate
+    type: string
+    required: false
+    description: The base material onto which the slurry is applied before sintering.
+    example_values:
+    - paper sheet
+    status: official
+    source_schema: official
+  - id: heating_rate
+    label: Heating Rate
+    type: number
+    required: true
+    description: The rate at which the temperature is increased during the sintering
+      cycle.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: heating_rate_units
+    label: Heating Rate Units
+    type: string
+    required: true
+    description: Unit of measurement for the heating rate.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_pressure
+    label: Sintering Pressure
+    type: number
+    required: true
+    description: The uniaxial pressure applied to the sample during the sintering
+      process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sintering_pressure_units
+    label: Sintering Pressure Units
+    type: string
+    required: true
+    description: Unit of measurement for the pressure.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: holding_time
+    label: Holding Time
+    type: number
+    required: true
+    description: The duration the sample is held at the maximum sintering temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: holding_time_units
+    label: Holding Time Units
+    type: string
+    required: true
+    description: Unit of measurement for the holding time.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_state
+    label: Input State
+    type: string
+    required: false
+    description: The physical state or form of the material prior to the sintering
+      operation.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_state
+    label: Output State
+    type: string
+    required: false
+    description: The physical state or form of the material resulting from the sintering
+      operation.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: spin_coating
+  label: Spin Coating
+  category_id: coating
+  category_label: Coating
+  hierarchy:
+  - Coating
+  - SpinCoating
+  definition: 'A procedure where a liquid solution is applied to a substrate and rotated
+    at high speed to produce a uniform thin film via centrifugal force.
+
+    Synonyms: spin-coating'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: medium
+    label: Medium
+    type: string
+    required: true
+    description: The liquid solution used for coating
+    example_values: []
+    status: official
+    source_schema: official
+  - id: medium_formula
+    label: Medium Formula
+    type: string
+    required: false
+    description: Chemical formula of the solvent or medium
+    example_values: []
+    status: official
+    source_schema: official
+  - id: substrate
+    label: Substrate
+    type: string
+    required: true
+    description: The substrate material being coated
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_state
+    label: Output State
+    type: string
+    required: false
+    description: The state of the substrate after coating
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: sputtering
+  label: Sputtering
+  category_id: thin_film_deposition
+  category_label: Thin Film Deposition
+  hierarchy:
+  - ThinFilmDeposition
+  - Sputtering
+  definition: 'A physical vapor deposition process where atoms are ejected from a
+    target material due to bombardment by energetic particles and deposited onto a
+    substrate to form a thin film.
+
+    Synonyms: magnetron sputtering, co-sputtering, PVD sputtering'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_material
+    label: Target Material
+    type: string
+    required: true
+    description: The material of the sputtering target used to provide the atoms for
+      deposition.
+    example_values:
+    - Ta
+    - Pd
+    - Au
+    - Au-Ag
+    status: official
+    source_schema: official
+  - id: substrate_material
+    label: Substrate Material
+    type: string
+    required: true
+    description: The material and type of the substrate onto which the film is deposited.
+    example_values:
+    - Si
+    - polyimide
+    - silicon wafers
+    status: official
+    source_schema: official
+  - id: film_thickness
+    label: Film Thickness
+    type: number
+    required: true
+    description: The thickness of the deposited layer or film.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: film_thickness_units
+    label: Film Thickness Units
+    type: string
+    required: false
+    description: Units for film_thickness.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: chamber_pressure
+    label: Chamber Pressure
+    type: number
+    required: true
+    description: The vacuum pressure level within the sputtering chamber.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: chamber_pressure_units
+    label: Chamber Pressure Units
+    type: string
+    required: false
+    description: Units for chamber_pressure.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deposition_temperature
+    label: Deposition Temperature
+    type: number
+    required: false
+    description: The temperature of the substrate or chamber during the deposition
+      process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deposition_temperature_units
+    label: Deposition Temperature Units
+    type: string
+    required: false
+    description: Units for deposition_temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: plasma_gas
+    label: Plasma Gas
+    type: string
+    required: false
+    description: The gas used to create the plasma for sputtering.
+    example_values:
+    - Ar
+    status: official
+    source_schema: official
+  - id: biasing_power
+    label: Biasing Power
+    type: number
+    required: false
+    description: The RF or DC power applied as a bias during deposition.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: biasing_power_units
+    label: Biasing Power Units
+    type: string
+    required: false
+    description: Units for biasing_power.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: deposition_method
+    label: Deposition Method
+    type: string
+    required: false
+    description: The specific mode of sputtering (e.g., co-sputtering for alloys,
+      sequential for multilayers).
+    example_values:
+    - sequential
+    - co-sputtering
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: surface_exposure
+  label: Surface Exposure
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - SurfaceExposure
+  definition: 'The process of exposing a sample surface to specific gases to modify
+    the surface chemistry, induce strain, or achieve other surface-level modifications.
+
+    Synonyms: gas exposure, surface gas treatment, chemical gas exposure'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: gas_type
+    label: Gas Type
+    type: string
+    required: true
+    description: The type of gas used for the exposure process.
+    example_values:
+    - Ozone
+    - Carbon Monoxide
+    status: official
+    source_schema: official
+  - id: concentration
+    label: Concentration
+    type: string
+    required: true
+    description: The concentration or partial pressure of the gas during exposure.
+    example_values:
+    - ~7 vol % O3
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: true
+    description: The overall gaseous environment or carrier gas during exposure.
+    example_values:
+    - O2
+    - Pure CO
+    status: official
+    source_schema: official
+  - id: purpose
+    label: Purpose
+    type: string
+    required: false
+    description: The intended outcome of the surface exposure process.
+    example_values:
+    - surface engineering
+    - actuation
+    - cleaning
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: surface_grinding
+  label: Surface Grinding
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - SurfaceGrinding
+  definition: 'The process of removing material from the surface of a sample using
+    abrasives to achieve a specific surface finish, flatness, or smoothness.
+
+    Synonyms: abrasive grinding, surface polishing'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: abrasive_material
+    label: Abrasive Material
+    type: string
+    required: true
+    description: The material used as an abrasive for the grinding process.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: tem_grid_mounting
+  label: Tem Grid Mounting
+  category_id: sample_preparation
+  category_label: Sample Preparation
+  hierarchy:
+  - SamplePreparation
+  - TemGridMounting
+  definition: 'The process of transferring sample slices or sections onto a support
+    grid for Transmission Electron Microscopy (TEM) analysis.
+
+    Synonyms: TEM mounting, grid loading, sample transfer to grid'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: grid_type
+    label: Grid Type
+    type: string
+    required: true
+    description: The material or design type of the grid used for mounting the sample.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: grid_mesh
+    label: Grid Mesh
+    type: integer
+    required: true
+    description: The mesh size (number of wires per inch) of the support grid.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: grid_mesh_units
+    label: Grid Mesh Units
+    type: string
+    required: false
+    description: Units for grid_mesh.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: thermal_coarsening
+  label: Thermal Coarsening
+  category_id: heat_treatment
+  category_label: Heat Treatment
+  hierarchy:
+  - HeatTreatment
+  - ThermalCoarsening
+  definition: 'A thermal process applied to nanoporous materials to induce structural
+    evolution, specifically the coarsening of ligaments and adjustment of pore size
+    through heating.
+
+    Synonyms: annealing, thermal annealing, heat treatment, ligament coarsening'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: true
+    description: The temperature at which the thermal treatment is performed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: true
+    description: The unit of measurement for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The length of time the sample is exposed to the heating temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: true
+    description: The unit of measurement for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: true
+    description: The gaseous environment in which the heating is performed.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: equipment
+    label: Equipment
+    type: string
+    required: false
+    description: The heating instrument or furnace used.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: coarsening_mechanism
+    label: Coarsening Mechanism
+    type: string
+    required: false
+    description: The physical mechanism driving the coarsening process.
+    example_values:
+    - coalescence
+    - Ostwald ripening
+    status: official
+    source_schema: official
+  - id: target_ligament_size
+    label: Target Ligament Size
+    type: number
+    required: false
+    description: The intended final size of the ligaments after treatment.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_ligament_size_units
+    label: Target Ligament Size Units
+    type: string
+    required: false
+    description: Units for target_ligament_size.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_sample_state
+    label: Input Sample State
+    type: string
+    required: false
+    description: The state or characteristics of the sample before the process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_sample_state
+    label: Output Sample State
+    type: string
+    required: false
+    description: The state or characteristics of the sample after the process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere_hydrogen_percentage
+    label: Atmosphere Hydrogen Percentage
+    type: number
+    required: false
+    description: The percentage of hydrogen in the process atmosphere.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere_hydrogen_percentage_units
+    label: Atmosphere Hydrogen Percentage Units
+    type: string
+    required: false
+    description: Units for atmosphere_hydrogen_percentage.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: input_material
+    label: Input Material
+    type: string
+    required: false
+    description: The composition of the material being treated.
+    example_values:
+    - NPG
+    - NPG-Pt
+    status: official
+    source_schema: official
+  - id: sample_relative_density
+    label: Sample Relative Density
+    type: number
+    required: false
+    description: The relative density of the sample.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sample_relative_density_units
+    label: Sample Relative Density Units
+    type: string
+    required: false
+    description: Units for sample_relative_density.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: thermal_cycling
+  label: Thermal Cycling
+  category_id: heat_treatment
+  category_label: Heat Treatment
+  hierarchy:
+  - HeatTreatment
+  - ThermalCycling
+  definition: 'A process of repeatedly cycling a material through a range of temperatures
+    to induce structural changes, such as coarsening, or to study material behavior
+    such as stress evolution.
+
+    Synonyms: cyclic thermal treatment, thermal cycling'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: true
+    description: The temperature levels reached during the thermal cycling process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_cycle_range
+    label: Temperature Cycle Range
+    type: number
+    required: true
+    description: The range of temperatures involved in the cycling process.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_cycle_range_units
+    label: Temperature Cycle Range Units
+    type: string
+    required: false
+    description: Units for temperature_cycle_range.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: thermal_treatment
+  label: Thermal Treatment
+  category_id: thermal_treatment
+  category_label: Thermal Treatment
+  hierarchy:
+  - ThermalTreatment
+  - ThermalTreatment
+  definition: 'The application of heat to a material for a specific duration and often
+    under a controlled atmosphere to modify its structural or textural properties.
+
+    Synonyms: Annealing, Heat treatment, Thermal processing'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature
+    label: Temperature
+    type: number
+    required: true
+    description: The temperature at which the material is treated.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: temperature_units
+    label: Temperature Units
+    type: string
+    required: false
+    description: Units for temperature.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration
+    label: Duration
+    type: number
+    required: true
+    description: The length of time the material is exposed to the heat treatment.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: duration_units
+    label: Duration Units
+    type: string
+    required: false
+    description: Units for duration.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: atmosphere
+    label: Atmosphere
+    type: string
+    required: false
+    description: The gas environment surrounding the sample during treatment.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: ultramicrotomy
+  label: Ultramicrotomy
+  category_id: base_model
+  category_label: Base Model
+  hierarchy:
+  - BaseModel
+  - Ultramicrotomy
+  definition: 'The process of cutting extremely thin sections of a sample, typically
+    for transmission electron microscopy (TEM), using an ultramicrotome.
+
+    Synonyms: ultra-microtomy, ultrathin sectioning'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: equipment
+    label: Equipment
+    type: string
+    required: true
+    description: The specific ultramicrotome instrument used for sectioning.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: section_thickness
+    label: Section Thickness
+    type: number
+    required: true
+    description: The thickness of the resulting sample slices.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: section_thickness_units
+    label: Section Thickness Units
+    type: string
+    required: false
+    description: Units for section_thickness.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: cutting_speed
+    label: Cutting Speed
+    type: number
+    required: false
+    description: The speed at which the knife cuts through the sample.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: cutting_speed_units
+    label: Cutting Speed Units
+    type: string
+    required: false
+    description: The unit of measurement for the cutting speed.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
+- id: wire_drawing
+  label: Wire Drawing
+  category_id: mechanical_shaping
+  category_label: Mechanical Shaping
+  hierarchy:
+  - MechanicalShaping
+  - WireDrawing
+  definition: 'A mechanical process of reducing the cross-section of a rod or wire
+    by pulling it through a shaped die to achieve a desired cylindrical geometry.
+
+    Synonyms: wire drawing, drawing'
+  synonyms: []
+  parameters:
+  - id: process_identifier
+    label: Process Identifier
+    type: string
+    required: false
+    description: Stable process identifier from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: process_name
+    label: Process Name
+    type: string
+    required: false
+    description: Human readable process name from the source schema.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sample_diameter
+    label: Sample Diameter
+    type: number
+    required: true
+    description: The final diameter of the drawn wire/sample.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sample_diameter_units
+    label: Sample Diameter Units
+    type: string
+    required: false
+    description: Units for sample_diameter.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sample_length
+    label: Sample Length
+    type: number
+    required: false
+    description: The final length of the drawn wire/sample.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: sample_length_units
+    label: Sample Length Units
+    type: string
+    required: false
+    description: Units for sample_length.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: output_geometry
+    label: Output Geometry
+    type: string
+    required: true
+    description: The geometric shape of the sample after the drawing process.
+    example_values:
+    - cylindrical form
+    status: official
+    source_schema: official
+  - id: tool
+    label: Tool
+    type: string
+    required: true
+    description: The tool (e.g., die) used to perform the drawing operation.
+    example_values: []
+    status: official
+    source_schema: official
+  - id: target_dimensions
+    label: Target Dimensions
+    type: string
+    required: false
+    description: The specified dimensions for the processed sample.
+    example_values: []
+    status: official
+    source_schema: official
+  status: official
+  source_schema: official
