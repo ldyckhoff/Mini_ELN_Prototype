@@ -1,6 +1,44 @@
 # Pilot ELN
 
-This is a small Streamlit ELN for documenting experiments while testing a metadata schema.
+Pilot ELN is a small Streamlit-based electronic lab notebook for documenting experimental fabrication workflows while testing and improving a metadata schema.
+
+The current version is focused on fabrication steps for nanoporous metals, especially dealloying-related workflows. The included metadata schema contains preliminary process names and process parameters. Users can document experiments, link samples to process steps, attach local files, and propose missing schema attributes directly from the app.
+
+Experimental data stays on your local computer. The app does not upload experiment records or attached files.
+
+Note! While the app does not require knowledge in python programming, a local python installation on your local computer is required to run the app. 
+
+## Main Features
+
+- Create, edit, save, load, and delete local experiment records.
+- Document samples and link them to process steps.
+- Build ordered fabrication workflows from schema-defined processes.
+- Add parameters for each process step using dynamic forms.
+- Attach local files to process steps, such as images, tables, spectra, or instrument exports.
+- Automatically create experiment, sample, process-step, and file IDs.
+- Store each experiment in its own local folder.
+- Browse the current metadata schema.
+- Propose missing process parameters without editing Python code.
+- Save proposed schema extensions to `schemas/proposed/student_extensions.yaml`.
+
+## Planned features:
+
+- Process graph visualization.
+- Filtering experiments by process parameters.
+- Improved schema feedback export.
+- Optional AI-assisted extraction from notes or documents.
+
+## What This App Is For
+
+Use this app if you want to:
+
+- Document fabrication experiments in a structured and connected way.
+- Test whether the current metadata schema is useful for real lab work.
+- Identify missing process parameters during daily documentation.
+- Collect schema improvement suggestions from students or researchers.
+- Keep experiment records local while still producing reviewable schema feedback.
+
+This app is currently a pilot tool, not a finalized institutional ELN.
 
 ## Install
 
