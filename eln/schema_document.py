@@ -133,17 +133,26 @@ class MetadataSchemaDocument:
             base_names = [
                 base.__name__
                 for base in process_cls.__bases__
-                if base.__name__ != "ProcessBase"
+                if base.__name__ not in {"ProcessBase", "BaseModel"}
             ]
             category_label = base_names[0] if base_names else None
             category_id = class_name_to_process_id(category_label.replace("Process", "")) if category_label else None
-            definition = inspect.getdoc(process_cls)
-            synonyms: list[str] = []
+            definition, synonyms = parse_process_docstring(inspect.getdoc(process_cls))
             parameters: list[ParameterDefinition] = []
+            process_id = class_name_to_process_id(process_cls.__name__)
+            process_label = camel_to_words(process_cls.__name__)
 
             for field_name, field_info in fields.items():
                 extra = field_info.json_schema_extra or {}
                 description = field_info.description
+                if field_name == "process_identifier":
+                    if field_info.default not in (None, "", ...):
+                        process_id = slugify(str(field_info.default))
+                    continue
+                if field_name == "process_name":
+                    if field_info.default not in (None, "", ...):
+                        process_label = str(field_info.default)
+                    continue
                 if extra.get("source") == "definition":
                     definition = description or definition
                     synonyms = list(extra.get("synonyms") or [])
@@ -167,8 +176,8 @@ class MetadataSchemaDocument:
 
             processes.append(
                 ProcessDefinition(
-                    id=class_name_to_process_id(process_cls.__name__),
-                    label=camel_to_words(process_cls.__name__),
+                    id=process_id,
+                    label=process_label,
                     category_id=category_id,
                     category_label=camel_to_words(category_label.replace("Process", "")) if category_label else None,
                     hierarchy=[*base_names, process_cls.__name__],
@@ -209,20 +218,31 @@ class MetadataSchemaDocument:
                 continue
 
             base_names = [base_name_from_ast(base) for base in node.bases]
-            base_names = [name for name in base_names if name and name != "ProcessBase"]
+            base_names = [
+                name for name in base_names if name and name not in {"ProcessBase", "BaseModel"}
+            ]
             category_label = base_names[0] if base_names else None
             category_id = (
                 class_name_to_process_id(category_label.replace("Process", ""))
                 if category_label
                 else None
             )
-            definition = ast.get_docstring(node)
-            synonyms: list[str] = []
+            definition, synonyms = parse_process_docstring(ast.get_docstring(node))
             parameters: list[ParameterDefinition] = []
+            process_id = class_name_to_process_id(node.name)
+            process_label = camel_to_words(node.name)
 
             for field_name, field_info in fields.items():
                 extra = field_info.get("json_schema_extra") or {}
                 description = field_info.get("description")
+                if field_name == "process_identifier":
+                    if field_info.get("default") not in (None, ""):
+                        process_id = slugify(str(field_info["default"]))
+                    continue
+                if field_name == "process_name":
+                    if field_info.get("default") not in (None, ""):
+                        process_label = str(field_info["default"])
+                    continue
                 if extra.get("source") == "definition":
                     definition = description or definition
                     synonyms = list(extra.get("synonyms") or [])
@@ -246,8 +266,8 @@ class MetadataSchemaDocument:
 
             processes.append(
                 ProcessDefinition(
-                    id=class_name_to_process_id(node.name),
-                    label=camel_to_words(node.name),
+                    id=process_id,
+                    label=process_label,
                     category_id=category_id,
                     category_label=camel_to_words(category_label.replace("Process", ""))
                     if category_label
@@ -566,12 +586,15 @@ def class_fields_from_ast(node: ast.ClassDef) -> dict[str, dict[str, Any]]:
 
         field_data: dict[str, Any] = {
             "annotation": ast.unparse(statement.annotation),
+            "default": None,
             "description": None,
             "json_schema_extra": {},
         }
         if isinstance(statement.value, ast.Call) and call_name(statement.value) == "Field":
+            if statement.value.args:
+                field_data["default"] = literal_or_none(statement.value.args[0])
             for keyword in statement.value.keywords:
-                if keyword.arg in {"description", "json_schema_extra"}:
+                if keyword.arg in {"default", "description", "json_schema_extra"}:
                     field_data[keyword.arg] = literal_or_none(keyword.value)
         fields[statement.target.id] = field_data
     return fields
@@ -598,3 +621,22 @@ def literal_or_none(node: ast.AST) -> Any:
         return ast.literal_eval(node)
     except Exception:
         return None
+
+
+def parse_process_docstring(docstring: str | None) -> tuple[str | None, list[str]]:
+    if not docstring:
+        return None, []
+
+    definition_lines: list[str] = []
+    synonyms: list[str] = []
+    for raw_line in docstring.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.lower().startswith("synonyms:"):
+            synonym_text = line.split(":", 1)[1]
+            synonyms = [item.strip() for item in synonym_text.split(",") if item.strip()]
+        else:
+            definition_lines.append(line)
+
+    return " ".join(definition_lines) or None, synonyms

@@ -23,7 +23,7 @@ def render_parameter_input(
     label = status_label(parameter)
     if parameter.unit:
         label = f"{label} ({parameter.unit})"
-    help_text = parameter.description
+    help_text = parameter_help(parameter)
 
     if parameter.type == "number":
         value = float(current_value) if current_value not in (None, "") else 0.0
@@ -57,3 +57,16 @@ def render_parameter_input(
 
     return st.text_input(label, value=str(current_value or ""), help=help_text, key=key)
 
+
+def parameter_help(parameter: ParameterDefinition) -> str:
+    parts = []
+    if parameter.description:
+        parts.append(parameter.description)
+    if parameter.example_values:
+        examples = ", ".join(str(value) for value in parameter.example_values[:5])
+        parts.append(f"Examples: {examples}")
+    if parameter.source_schema:
+        parts.append(f"Schema source: {parameter.source_schema}")
+    if parameter.reason:
+        parts.append(f"Reason: {parameter.reason}")
+    return "\n\n".join(parts)

@@ -54,10 +54,22 @@ def new_experiment() -> None:
     st.session_state.experiment = Experiment(schema_version=st.session_state.schema.version)
     st.session_state.loaded_experiment_id = None
     st.session_state.selected_step_id = None
+    st.session_state.selected_sample_id = None
 
 
 def select_step(step_id: str | None) -> None:
     st.session_state.selected_step_id = step_id
+    st.session_state.selected_sample_id = None
+
+
+def select_sample(sample_id: str | None) -> None:
+    st.session_state.selected_sample_id = sample_id
+    st.session_state.selected_step_id = None
+
+
+def back_to_overview() -> None:
+    st.session_state.selected_step_id = None
+    st.session_state.selected_sample_id = None
 
 
 def reload_schema() -> None:
@@ -89,6 +101,68 @@ def add_schema_feedback(
     )
 
 
+def steps_for_sample(sample_id: str) -> list[GenericProcessStep]:
+    return [step for step in exp.process_steps if sample_id in step.sample_ids]
+
+
+def step_process_help(step: GenericProcessStep) -> str | None:
+    process = schema_doc.get_process(step.process_id)
+    if not process:
+        return None
+    return process.definition
+
+
+def render_add_parameter_form(
+    process: ProcessDefinition,
+    form_key: str,
+    step: GenericProcessStep | None = None,
+) -> None:
+    with st.form(form_key):
+        parameter_label = st.text_input("Parameter label")
+        parameter_id = st.text_input("Parameter ID")
+        parameter_type = st.selectbox(
+            "Type",
+            ["string", "number", "integer", "boolean", "date", "datetime", "enum"],
+            key=f"{form_key}_type",
+        )
+        unit = st.text_input("Unit")
+        required = st.checkbox("Required")
+        description = st.text_area("Description", height=80)
+        example_value = st.text_input("Example value")
+        reason = st.text_area("Why is this needed?", height=80)
+
+        if st.form_submit_button("Save proposed parameter"):
+            try:
+                parameter = ParameterDefinition(
+                    id=parameter_id.strip(),
+                    label=parameter_label.strip(),
+                    type=parameter_type,
+                    unit=unit or None,
+                    required=required,
+                    description=description or None,
+                    example_values=[example_value] if example_value else [],
+                    status="proposed",
+                    reason=reason or None,
+                )
+                schema_doc.add_proposed_parameter(
+                    PROPOSED_SCHEMA_PATH,
+                    process.id,
+                    process.label,
+                    parameter,
+                )
+                if step:
+                    step.parameters.setdefault(parameter.id, None)
+                    step.used_proposed_schema_items.append(f"parameter:{parameter.id}")
+                    add_schema_feedback(step, "missing_parameter", parameter.id, reason)
+                reload_schema()
+                st.session_state.last_message = (
+                    f"Saved proposed schema extension to: {PROPOSED_SCHEMA_PATH}"
+                )
+                st.rerun()
+            except (ValidationError, ValueError) as exc:
+                st.error(str(exc))
+
+
 if "schema" not in st.session_state:
     reload_schema()
 
@@ -100,6 +174,9 @@ if "loaded_experiment_id" not in st.session_state:
 
 if "selected_step_id" not in st.session_state:
     st.session_state.selected_step_id = None
+
+if "selected_sample_id" not in st.session_state:
+    st.session_state.selected_sample_id = None
 
 if "last_message" not in st.session_state:
     st.session_state.last_message = None
@@ -131,6 +208,7 @@ if experiment_options:
         st.session_state.experiment = load_experiment(DATA_DIR, selected_file_id)
         st.session_state.loaded_experiment_id = selected_file_id
         st.session_state.selected_step_id = None
+        st.session_state.selected_sample_id = None
         st.session_state.last_message = f"Loaded experiment: {selected_file_id}"
         st.rerun()
 
@@ -142,14 +220,20 @@ with st.sidebar.expander("Samples", expanded=True):
     if not exp.samples:
         st.caption("No samples yet")
     for sample in exp.samples:
-        st.write(f"- {sample.name or sample.id}")
+        if st.button(sample.name or sample.id, key=f"select_sample_{sample.id}"):
+            select_sample(sample.id)
+            st.rerun()
 
 with st.sidebar.expander("Workflow", expanded=True):
     if not exp.process_steps:
         st.caption("No process steps yet")
     for index, step in enumerate(exp.process_steps, start=1):
         marker = " [proposed]" if step.schema_status == "proposed" else ""
-        if st.button(f"{index}. {step.name}{marker}", key=f"select_{step.id}"):
+        if st.button(
+            f"{index}. {step.name}{marker}",
+            key=f"select_{step.id}",
+            help=step_process_help(step),
+        ):
             select_step(step.id)
             st.rerun()
 
@@ -174,7 +258,7 @@ page = st.tabs(["Experiment", "Schema browser", "Settings"])
 
 
 with page[0]:
-    if st.session_state.selected_step_id is None:
+    if st.session_state.selected_step_id is None and st.session_state.selected_sample_id is None:
         st.subheader("Experiment overview")
 
         col_a, col_b, col_c = st.columns(3)
@@ -208,13 +292,39 @@ with page[0]:
                         st.warning("Please provide a sample name.")
 
             if exp.samples:
-                edited_samples = st.data_editor(
-                    [sample.model_dump(mode="json") for sample in exp.samples],
-                    hide_index=True,
-                    disabled=["id", "created_at"],
-                    key="samples_editor",
-                )
-                exp.samples = [Sample.model_validate(item) for item in edited_samples]
+                sample_rows = []
+                for sample in exp.samples:
+                    related_steps = steps_for_sample(sample.id)
+                    sample_rows.append(
+                        {
+                            "sample": sample.name,
+                            "material": sample.material or "",
+                            "used in steps": ", ".join(step.name for step in related_steps),
+                            "number of steps": len(related_steps),
+                        }
+                    )
+                st.dataframe(sample_rows, hide_index=True, width="stretch")
+
+                st.markdown("**Open samples and linked steps**")
+                for sample in exp.samples:
+                    related_steps = steps_for_sample(sample.id)
+                    label = f"{sample.name} ({len(related_steps)} linked steps)"
+                    with st.expander(label):
+                        if st.button("Edit sample", key=f"edit_sample_{sample.id}"):
+                            select_sample(sample.id)
+                            st.rerun()
+                        if related_steps:
+                            st.caption("Linked process steps")
+                            for step in related_steps:
+                                if st.button(
+                                    step.name,
+                                    key=f"sample_{sample.id}_step_{step.id}",
+                                    help=step_process_help(step),
+                                ):
+                                    select_step(step.id)
+                                    st.rerun()
+                        else:
+                            st.caption("This sample is not linked to any process step yet.")
 
         with step_col:
             st.subheader("Add process step")
@@ -230,6 +340,10 @@ with page[0]:
                 )
                 selected_process = schema_doc.get_process(process_id)
                 if selected_process:
+                    if selected_process.definition:
+                        st.caption(selected_process.definition)
+                    if selected_process.synonyms:
+                        st.caption("Synonyms: " + ", ".join(selected_process.synonyms))
                     with st.form("add_process_step"):
                         default_name = selected_process.label
                         step_name = st.text_input("Step name", default_name)
@@ -339,6 +453,23 @@ with page[0]:
                         except ValidationError as exc:
                             st.error(str(exc))
 
+            if processes:
+                with st.expander("Add attribute to existing process"):
+                    target_process_id = st.selectbox(
+                        "Existing process",
+                        [process.id for process in processes],
+                        format_func=lambda pid: status_label(schema_doc.get_process(pid)),
+                        key="add_attribute_process_id",
+                    )
+                    target_process = schema_doc.get_process(target_process_id)
+                    if target_process:
+                        if target_process.definition:
+                            st.caption(target_process.definition)
+                        render_add_parameter_form(
+                            target_process,
+                            form_key=f"overview_add_parameter_{target_process.id}",
+                        )
+
         st.divider()
         st.subheader("Workflow")
         if exp.process_steps:
@@ -362,17 +493,58 @@ with page[0]:
         else:
             st.caption("No workflow steps yet.")
 
+    elif st.session_state.selected_sample_id is not None:
+        sample = next(
+            item for item in exp.samples if item.id == st.session_state.selected_sample_id
+        )
+        st.subheader(f"Sample: {sample.name}")
+
+        if st.button("Back to overview"):
+            back_to_overview()
+            st.rerun()
+
+        col_left, col_right = st.columns([2, 1])
+        with col_left:
+            sample.name = st.text_input("Sample name", sample.name)
+            sample.material = st.text_input("Material", sample.material or "")
+            sample.notes = st.text_area("Notes", sample.notes or "", height=140)
+
+        with col_right:
+            st.markdown("**Linked process steps**")
+            related_steps = steps_for_sample(sample.id)
+            if related_steps:
+                for step in related_steps:
+                    if st.button(
+                        step.name,
+                        key=f"sample_detail_step_{step.id}",
+                        help=step_process_help(step),
+                    ):
+                        select_step(step.id)
+                        st.rerun()
+            else:
+                st.caption("This sample is not linked to any process step yet.")
+
+            st.divider()
+            if st.button("Delete sample"):
+                for step in exp.process_steps:
+                    step.sample_ids = [sid for sid in step.sample_ids if sid != sample.id]
+                exp.samples.remove(sample)
+                back_to_overview()
+                st.rerun()
+
     else:
         step = next(
             item for item in exp.process_steps if item.id == st.session_state.selected_step_id
         )
         process = schema_doc.get_process(step.process_id)
         st.subheader(f"Process step: {step.name}")
+        if process and process.definition:
+            st.caption(process.definition)
         if process and process.status == "proposed":
             st.info("This step uses a proposed process definition.")
 
         if st.button("Back to overview"):
-            select_step(None)
+            back_to_overview()
             st.rerun()
 
         col_left, col_right = st.columns([2, 1])
@@ -491,47 +663,14 @@ with page[0]:
 
         st.divider()
         with st.expander("Schema not sufficient? Add missing parameter"):
-            with st.form(f"missing_parameter_{step.id}"):
-                parameter_label = st.text_input("Parameter label")
-                parameter_id = st.text_input("Parameter ID")
-                parameter_type = st.selectbox(
-                    "Type",
-                    ["string", "number", "integer", "boolean", "date", "datetime", "enum"],
+            if process:
+                render_add_parameter_form(
+                    process,
+                    form_key=f"missing_parameter_{step.id}",
+                    step=step,
                 )
-                unit = st.text_input("Unit")
-                required = st.checkbox("Required")
-                description = st.text_area("Description", height=80)
-                example_value = st.text_input("Example value")
-                reason = st.text_area("Why is this needed?", height=80)
-                if st.form_submit_button("Save proposed parameter"):
-                    if not process:
-                        st.error("Process definition not found.")
-                    else:
-                        parameter = ParameterDefinition(
-                            id=parameter_id.strip(),
-                            label=parameter_label.strip(),
-                            type=parameter_type,
-                            unit=unit or None,
-                            required=required,
-                            description=description or None,
-                            example_values=[example_value] if example_value else [],
-                            status="proposed",
-                            reason=reason or None,
-                        )
-                        schema_doc.add_proposed_parameter(
-                            PROPOSED_SCHEMA_PATH,
-                            process.id,
-                            process.label,
-                            parameter,
-                        )
-                        step.parameters.setdefault(parameter.id, None)
-                        step.used_proposed_schema_items.append(f"parameter:{parameter.id}")
-                        add_schema_feedback(step, "missing_parameter", parameter.id, reason)
-                        reload_schema()
-                        st.session_state.last_message = (
-                            f"Saved proposed schema extension to: {PROPOSED_SCHEMA_PATH}"
-                        )
-                        st.rerun()
+            else:
+                st.error("Process definition not found.")
 
         warnings = schema_doc.validate_process_parameters(step.process_id, step.parameters)
         if warnings:
@@ -566,6 +705,12 @@ with page[1]:
                 st.dataframe(rows, hide_index=True, width="stretch")
             else:
                 st.caption("No parameters defined.")
+
+            with st.expander("Add proposed attribute to this process"):
+                render_add_parameter_form(
+                    process,
+                    form_key=f"schema_browser_add_parameter_{process.id}",
+                )
 
 
 with page[2]:

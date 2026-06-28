@@ -7,28 +7,13 @@ processes:
   hierarchy:
   - ChemicalTreatment
   - AcidTreatment
-  definition: 'Immersion of a material in an acidic solution to chemically modify
-    the surface or internal structure.
-
-    Synonyms: Acid immersion, Chemical etching, Acid wash'
-  synonyms: []
+  definition: Immersion of a material in an acidic solution to chemically modify the
+    surface or internal structure.
+  synonyms:
+  - Acid immersion
+  - Chemical etching
+  - Acid wash
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: medium
     label: Medium
     type: string
@@ -102,31 +87,17 @@ processes:
   hierarchy:
   - AlloyPreparation
   - AlloyMelting
-  definition: 'The process of heating elemental materials above their melting points
+  definition: The process of heating elemental materials above their melting points
     to create a homogeneous metallic alloy, typically resulting in an ingot. This
     operation may employ different heating methods such as arc, induction, or electron
     beam melting.
-
-    Synonyms: arc melting, induction melting, electron beam melting, alloy synthesis
-    via melting, master alloy preparation'
-  synonyms: []
+  synonyms:
+  - arc melting
+  - induction melting
+  - electron beam melting
+  - alloy synthesis via melting
+  - master alloy preparation
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: input_materials
     label: Input Materials
     type: string
@@ -233,29 +204,14 @@ processes:
   hierarchy:
   - HeatTreatment
   - Annealing
-  definition: 'Heat treatment of a material at elevated temperatures for a specific
+  definition: Heat treatment of a material at elevated temperatures for a specific
     duration and atmosphere to modify its microstructure, such as inducing coarsening,
     recovery, or modifying pore size.
-
-    Synonyms: thermal annealing, coarsening annealing, heat treatment'
-  synonyms: []
+  synonyms:
+  - thermal annealing
+  - coarsening annealing
+  - heat treatment
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: temperature
     label: Temperature
     type: number
@@ -387,28 +343,11 @@ processes:
   hierarchy:
   - ThinFilmDeposition
   - AtomicLayerDeposition
-  definition: 'A vapor phase deposition technique that uses sequential, self-limiting
+  definition: A vapor phase deposition technique that uses sequential, self-limiting
     surface reactions to deposit ultra-thin films with atomic-level thickness control.
-
-    Synonyms: ALD'
-  synonyms: []
+  synonyms:
+  - ALD
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: number_of_cycles
     label: Number Of Cycles
     type: integer
@@ -448,34 +387,16 @@ processes:
   source_schema: official
 - id: ball_milling
   label: Ball Milling
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - BallMilling
-  definition: 'A process of grinding or mixing materials using spherical balls in
-    a rotating or vibrating container to achieve particle size reduction, homogenization,
+  definition: A process of grinding or mixing materials using spherical balls in a
+    rotating or vibrating container to achieve particle size reduction, homogenization,
     or mechanical alloying.
-
-    Synonyms: mechanical alloying, high energy ball milling, planetary ball milling'
-  synonyms: []
+  synonyms:
+  - mechanical alloying
+  - high energy ball milling
+  - planetary ball milling
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: starting_materials
     label: Starting Materials
     type: string
@@ -571,33 +492,13 @@ processes:
   source_schema: official
 - id: blow_casting
   label: Blow Casting
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - BlowCasting
-  definition: 'A metal casting process where a precursor alloy is shaped into a specific
+  definition: A metal casting process where a precursor alloy is shaped into a specific
     geometry, such as a rod, using a blowing technique.
-
-    Synonyms: Blow casting'
-  synonyms: []
+  synonyms:
+  - Blow casting
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: casting_technique
     label: Casting Technique
     type: string
@@ -625,29 +526,14 @@ processes:
   hierarchy:
   - Dealloying
   - ChemicalDealloying
-  definition: 'The selective dissolution of a less noble component from an alloy using
+  definition: The selective dissolution of a less noble component from an alloy using
     a chemical solution (typically acid or base) under free corrosion conditions without
     an external electrical drive.
-
-    Synonyms: chemical etching, selective leaching, free corrosion dealloying'
-  synonyms: []
+  synonyms:
+  - chemical etching
+  - selective leaching
+  - free corrosion dealloying
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: electrolyte_formula
     label: Electrolyte Formula
     type: string
@@ -729,35 +615,20 @@ processes:
     source_schema: official
   status: official
   source_schema: official
-- id: coating_process
-  label: Coating Process
+- id: coating
+  label: Coating
   category_id: electrode_assembly
   category_label: Electrode Assembly
   hierarchy:
   - ElectrodeAssembly
   - CoatingProcess
-  definition: 'The application of a material, such as a catalyst ink, onto a substrate
+  definition: The application of a material, such as a catalyst ink, onto a substrate
     surface to form a functional layer.
-
-    Synonyms: drop casting, ink deposition, electrode coating'
-  synonyms: []
+  synonyms:
+  - drop casting
+  - ink deposition
+  - electrode coating
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: ink_volume
     label: Ink Volume
     type: number
@@ -807,28 +678,13 @@ processes:
   hierarchy:
   - SensorAssembly
   - ComponentMounting
-  definition: 'The process of fixing a component or device onto a substrate or support
+  definition: The process of fixing a component or device onto a substrate or support
     structure to ensure stability or establish electrical connections.
-
-    Synonyms: mounting, component attachment, substrate mounting'
-  synonyms: []
+  synonyms:
+  - mounting
+  - component attachment
+  - substrate mounting
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: substrate
     label: Substrate
     type: string
@@ -857,28 +713,14 @@ processes:
   hierarchy:
   - MechanicalProcessing
   - Cutting
-  definition: 'The process of dividing a material or sample into smaller pieces, slices,
+  definition: The process of dividing a material or sample into smaller pieces, slices,
     or specific geometries using mechanical or electrical means.
-
-    Synonyms: sample cutting, sectioning, slicing, dividing'
-  synonyms: []
+  synonyms:
+  - sample cutting
+  - sectioning
+  - slicing
+  - dividing
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: output_geometry
     label: Output Geometry
     type: string
@@ -944,34 +786,15 @@ processes:
   source_schema: official
 - id: cyclic_voltammetry
   label: Cyclic Voltammetry
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - CyclicVoltammetry
-  definition: 'An electrochemical measurement technique where the potential of a working
+  definition: An electrochemical measurement technique where the potential of a working
     electrode is swept linearly with time and then reversed, used to determine potential
     ranges or monitor redox behavior and resistance.
-
-    Synonyms: Cyclovoltammetric Scanning, CV'
-  synonyms: []
+  synonyms:
+  - Cyclovoltammetric Scanning
+  - CV
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: scan_rate
     label: Scan Rate
     type: number
@@ -1009,33 +832,14 @@ processes:
   source_schema: official
 - id: drying
   label: Drying
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - Drying
-  definition: 'The process of removing a liquid medium from a sample, typically via
+  definition: The process of removing a liquid medium from a sample, typically via
     evaporation, air flow, or vacuum.
-
-    Synonyms: Air Drying, Vacuum Drying'
-  synonyms: []
+  synonyms:
+  - Air Drying
+  - Vacuum Drying
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: drying_atmosphere
     label: Drying Atmosphere
     type: string
@@ -1105,28 +909,12 @@ processes:
   hierarchy:
   - SensorAssembly
   - ElectricalContacting
-  definition: 'The process of establishing a conductive electrical connection between
+  definition: The process of establishing a conductive electrical connection between
     two or more components using a conductive medium such as paint, adhesive, or solder.
-
-    Synonyms: Electrical Connection, Conductive Contacting'
-  synonyms: []
+  synonyms:
+  - Electrical Connection
+  - Conductive Contacting
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: contacting_agent
     label: Contacting Agent
     type: string
@@ -1148,35 +936,16 @@ processes:
   source_schema: official
 - id: electrochemical_activation
   label: Electrochemical Activation
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - ElectrochemicalActivation
-  definition: 'The use of electrical potential in an electrolyte solution to remove
+  definition: The use of electrical potential in an electrolyte solution to remove
     surface oxides or modify the surface state of a sample, often using techniques
     like cyclic voltammetry, to prepare it for subsequent experiments.
-
-    Synonyms: Electrochemical reduction, Electrochemical cleaning, Electrochemical
-    surface preparation'
-  synonyms: []
+  synonyms:
+  - Electrochemical reduction
+  - Electrochemical cleaning
+  - Electrochemical surface preparation
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: electrolyte_formula
     label: Electrolyte Formula
     type: string
@@ -1270,34 +1039,15 @@ processes:
   source_schema: official
 - id: electrochemical_charging
   label: Electrochemical Charging
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - ElectrochemicalCharging
-  definition: 'The process of applying an electrical potential to a material surface
+  definition: The process of applying an electrical potential to a material surface
     immersed in an electrolyte to modify its charge state or electrical properties,
     such as resistance.
-
-    Synonyms: electrochemical charging, surface charging'
-  synonyms: []
+  synonyms:
+  - electrochemical charging
+  - surface charging
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: electrolyte
     label: Electrolyte
     type: string
@@ -1409,30 +1159,15 @@ processes:
   hierarchy:
   - Dealloying
   - ElectrochemicalDealloying
-  definition: 'The selective dissolution of a less noble component from an alloy using
+  definition: The selective dissolution of a less noble component from an alloy using
     an external electric potential or current to control the leaching process and
     create a nanoporous structure.
-
-    Synonyms: electrochemical etching, potentiostatic dealloying, galvanostatic dealloying,
-    pulse electrochemical dealloying'
-  synonyms: []
+  synonyms:
+  - electrochemical etching
+  - potentiostatic dealloying
+  - galvanostatic dealloying
+  - pulse electrochemical dealloying
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: potential
     label: Potential
     type: number
@@ -1587,28 +1322,12 @@ processes:
   hierarchy:
   - SurfaceCoating
   - ElectrochemicalPolymerization
-  definition: 'The process of using an electric current to induce the polymerization
+  definition: The process of using an electric current to induce the polymerization
     of a monomer onto a conductive substrate, creating a polymer layer.
-
-    Synonyms: electropolymerization, electrochemical growth of polymers'
-  synonyms: []
+  synonyms:
+  - electropolymerization
+  - electrochemical growth of polymers
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: control_mode
     label: Control Mode
     type: string
@@ -1690,33 +1409,14 @@ processes:
   source_schema: official
 - id: electrochemical_reduction
   label: Electrochemical Reduction
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - ElectrochemicalReduction
-  definition: 'The use of an electrochemical cell to induce the reduction of a sample,
+  definition: The use of an electrochemical cell to induce the reduction of a sample,
     often utilizing techniques such as potential cycling to modify structural characteristics.
-
-    Synonyms: Electrochemical Potential Cycling, Potential Cycling Reduction'
-  synonyms: []
+  synonyms:
+  - Electrochemical Potential Cycling
+  - Potential Cycling Reduction
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: electrolyte_formula
     label: Electrolyte Formula
     type: string
@@ -1870,28 +1570,12 @@ processes:
   hierarchy:
   - SurfaceTreatment
   - ElectrochemicalSurfaceCleaning
-  definition: 'Removal of surface contaminants or oxides by applying an electrical
+  definition: Removal of surface contaminants or oxides by applying an electrical
     potential or cycling potentials in an electrolyte.
-
-    Synonyms: electrochemical cleaning, potential cycling cleaning'
-  synonyms: []
+  synonyms:
+  - electrochemical cleaning
+  - potential cycling cleaning
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: number_of_cycles
     label: Number Of Cycles
     type: integer
@@ -1933,29 +1617,13 @@ processes:
   hierarchy:
   - PrecursorPreparation
   - ElectrolytePreparation
-  definition: 'The process of preparing a chemical solution used as an electrolyte,
+  definition: The process of preparing a chemical solution used as an electrolyte,
     typically involving mixing solvents, solutes, and additives to achieve specific
     concentrations.
-
-    Synonyms: electrolyte solution preparation, mixing electrolyte'
-  synonyms: []
+  synonyms:
+  - electrolyte solution preparation
+  - mixing electrolyte
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: electrolyte_formula
     label: Electrolyte Formula
     type: string
@@ -2009,29 +1677,14 @@ processes:
   hierarchy:
   - SensorAssembly
   - Encapsulation
-  definition: 'The process of sealing a device, component, or sensor within a protective
+  definition: The process of sealing a device, component, or sensor within a protective
     enclosure or chamber to isolate it from the external environment or to facilitate
     a controlled environment.
-
-    Synonyms: sealing, enclosure, device packaging'
-  synonyms: []
+  synonyms:
+  - sealing
+  - enclosure
+  - device packaging
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: enclosure_material
     label: Enclosure Material
     type: string
@@ -2060,27 +1713,11 @@ processes:
   hierarchy:
   - FilmFabrication
   - FilmDeposition
-  definition: 'The process of applying a thin layer of material onto a substrate surface.
-
-    Synonyms: thin film deposition, layer deposition'
-  synonyms: []
+  definition: The process of applying a thin layer of material onto a substrate surface.
+  synonyms:
+  - thin film deposition
+  - layer deposition
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: substrate_material
     label: Substrate Material
     type: string
@@ -2138,28 +1775,13 @@ processes:
   hierarchy:
   - SurfaceTreatment
   - Flattening
-  definition: 'The process of applying pressure or force using a smooth surface to
+  definition: The process of applying pressure or force using a smooth surface to
     flatten and planarize a coated layer or material surface.
-
-    Synonyms: planarization, surface flattening, smoothing'
-  synonyms: []
+  synonyms:
+  - planarization
+  - surface flattening
+  - smoothing
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: tool
     label: Tool
     type: string
@@ -2193,28 +1815,13 @@ processes:
   hierarchy:
   - Dealloying
   - FreeCorrosionDealloying
-  definition: 'Removal of a selective component from an alloy through immersion in
+  definition: Removal of a selective component from an alloy through immersion in
     an electrolyte without the application of an external electrical potential.
-
-    Synonyms: chemical dealloying, spontaneous dealloying, free corrosion'
-  synonyms: []
+  synonyms:
+  - chemical dealloying
+  - spontaneous dealloying
+  - free corrosion
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: electrolyte_formula
     label: Electrolyte Formula
     type: string
@@ -2274,36 +1881,20 @@ processes:
     source_schema: official
   status: official
   source_schema: official
-- id: heat_treatment_proc
-  label: Heat Treatment Proc
+- id: heat_treatment
+  label: Heat Treatment
   category_id: thermal_treatment
   category_label: Thermal Treatment
   hierarchy:
   - ThermalTreatment
   - HeatTreatmentProc
-  definition: 'The process of heating and cooling a material to a specific temperature
+  definition: The process of heating and cooling a material to a specific temperature
     and duration to change its physical or chemical properties, such as relieving
     internal stress.
-
-    Synonyms: Thermal treatment, Thermal stress relief'
-  synonyms: []
+  synonyms:
+  - Thermal treatment
+  - Thermal stress relief
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: temperature
     label: Temperature
     type: number
@@ -2348,33 +1939,14 @@ processes:
   source_schema: official
 - id: hydrogen_treatment
   label: Hydrogen Treatment
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - HydrogenTreatment
-  definition: 'Exposure of a material to a hydrogen-containing atmosphere, potentially
+  definition: Exposure of a material to a hydrogen-containing atmosphere, potentially
     in a cyclic manner, to evaluate its response or modify its hydride content.
-
-    Synonyms: hydrogen exposure, hydrogenation treatment'
-  synonyms: []
+  synonyms:
+  - hydrogen exposure
+  - hydrogenation treatment
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: hydrogen_content
     label: Hydrogen Content
     type: string
@@ -2410,28 +1982,13 @@ processes:
   hierarchy:
   - Patterning
   - Lithography
-  definition: 'A process of patterning a substrate or resist to create specific geometric
+  definition: A process of patterning a substrate or resist to create specific geometric
     shapes, often using a beam of light or electrons.
-
-    Synonyms: Electron beam lithography, E-beam lithography, Patterning'
-  synonyms: []
+  synonyms:
+  - Electron beam lithography
+  - E-beam lithography
+  - Patterning
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: tool
     label: Tool
     type: string
@@ -2491,28 +2048,13 @@ processes:
   hierarchy:
   - MechanicalProcessing
   - MechanicalGrinding
-  definition: 'The process of reducing the bulk size of a material into smaller particles
+  definition: The process of reducing the bulk size of a material into smaller particles
     or a powder form through mechanical force.
-
-    Synonyms: pulverization, size reduction, milling'
-  synonyms: []
+  synonyms:
+  - pulverization
+  - size reduction
+  - milling
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: target_material_state
     label: Target Material State
     type: string
@@ -2532,28 +2074,12 @@ processes:
   hierarchy:
   - Cleaning
   - MechanicalSurfaceCleaning
-  definition: 'Removal of surface contaminants, such as oxide scales, using physical
+  definition: Removal of surface contaminants, such as oxide scales, using physical
     or mechanical force.
-
-    Synonyms: mechanical cleaning, physical surface cleaning'
-  synonyms: []
+  synonyms:
+  - mechanical cleaning
+  - physical surface cleaning
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: input_state
     label: Input State
     type: string
@@ -2576,34 +2102,15 @@ processes:
   source_schema: official
 - id: melt_spinning
   label: Melt Spinning
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - MeltSpinning
-  definition: 'A process of rapid solidification where a molten material is ejected
+  definition: A process of rapid solidification where a molten material is ejected
     onto a rotating cold disk or roller to produce thin ribbons or flakes with a controlled
     microstructure (often amorphous or fine-grained).
-
-    Synonyms: melt-spinning, rapid solidification spinning'
-  synonyms: []
+  synonyms:
+  - melt-spinning
+  - rapid solidification spinning
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: rotation_speed
     label: Rotation Speed
     type: number
@@ -2704,33 +2211,15 @@ processes:
   source_schema: official
 - id: mixing
   label: Mixing
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - Mixing
-  definition: 'The process of combining multiple components, such as powders, solvents,
+  definition: The process of combining multiple components, such as powders, solvents,
     and binders, to create a uniform mixture or suspension.
-
-    Synonyms: dispersion preparation, suspension preparation, blending'
-  synonyms: []
+  synonyms:
+  - dispersion preparation
+  - suspension preparation
+  - blending
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: solvent_volume
     label: Solvent Volume
     type: number
@@ -2783,33 +2272,15 @@ processes:
   source_schema: official
 - id: polishing
   label: Polishing
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - Polishing
-  definition: 'The mechanical process of smoothing or refining a material surface
-    using abrasive agents to achieve a specific finish, planarity, or cleanliness.
-
-    Synonyms: surface polishing, mechanical abrasion, surface preparation'
-  synonyms: []
+  definition: The mechanical process of smoothing or refining a material surface using
+    abrasive agents to achieve a specific finish, planarity, or cleanliness.
+  synonyms:
+  - surface polishing
+  - mechanical abrasion
+  - surface preparation
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: abrasive_material
     label: Abrasive Material
     type: string
@@ -2874,29 +2345,14 @@ processes:
   hierarchy:
   - ElectrochemicalConditioning
   - PotentialCycling
-  definition: 'The process of repeatedly cycling the electrical potential of an electrode
+  definition: The process of repeatedly cycling the electrical potential of an electrode
     between specific values to stabilize the material, remove impurities, or prepare
     the sample for subsequent measurements.
-
-    Synonyms: electrochemical cycling, voltage cycling, potential scan cycling'
-  synonyms: []
+  synonyms:
+  - electrochemical cycling
+  - voltage cycling
+  - potential scan cycling
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: cycle_count
     label: Cycle Count
     type: integer
@@ -2962,29 +2418,15 @@ processes:
   hierarchy:
   - SamplePreparation
   - ProtectiveCoatingApplication
-  definition: 'The process of applying a protective layer (such as a lacquer or polymer)
+  definition: The process of applying a protective layer (such as a lacquer or polymer)
     to specific areas of a sample to protect it, secure it, or isolate it during subsequent
     processing steps.
-
-    Synonyms: protective coating, lacquer coating, sample edging, edge protection'
-  synonyms: []
+  synonyms:
+  - protective coating
+  - lacquer coating
+  - sample edging
+  - edge protection
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: coating_material
     label: Coating Material
     type: string
@@ -3021,28 +2463,12 @@ processes:
   hierarchy:
   - HeatTreatment
   - Quenching
-  definition: 'The process of rapidly cooling a material, typically from an elevated
+  definition: The process of rapidly cooling a material, typically from an elevated
     temperature, to preserve a specific microstructure or phase.
-
-    Synonyms: water quenching, rapid cooling'
-  synonyms: []
+  synonyms:
+  - water quenching
+  - rapid cooling
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: quenching_medium
     label: Quenching Medium
     type: string
@@ -3056,34 +2482,16 @@ processes:
   source_schema: official
 - id: resin_impregnation
   label: Resin Impregnation
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - ResinImpregnation
-  definition: 'The process of infiltrating a sample with a resin, often under vacuum,
+  definition: The process of infiltrating a sample with a resin, often under vacuum,
     to stabilize the material or provide structural support for subsequent processing
     such as sectioning.
-
-    Synonyms: epoxy impregnation, vacuum impregnation, resin infiltration'
-  synonyms: []
+  synonyms:
+  - epoxy impregnation
+  - vacuum impregnation
+  - resin infiltration
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: impregnation_medium
     label: Impregnation Medium
     type: string
@@ -3135,28 +2543,13 @@ processes:
   hierarchy:
   - Cleaning
   - Rinsing
-  definition: 'The process of washing a sample with a liquid medium to remove residual
+  definition: The process of washing a sample with a liquid medium to remove residual
     chemicals, electrolytes, or contaminants from the surface or structure.
-
-    Synonyms: Washing, Cleaning (liquid), Soaking'
-  synonyms: []
+  synonyms:
+  - Washing
+  - Cleaning (liquid)
+  - Soaking
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: rinsing_medium
     label: Rinsing Medium
     type: string
@@ -3235,29 +2628,16 @@ processes:
   hierarchy:
   - MechanicalProcessing
   - Rolling
-  definition: 'The process of reducing the thickness of a material (such as an alloy
+  definition: The process of reducing the thickness of a material (such as an alloy
     ingot or sheet) by passing it through rollers or applying mechanical compression
-    to achieve a target thickness and refine the material''s structure.
-
-    Synonyms: cold rolling, hot rolling, mechanical deformation, cold working, pressing'
-  synonyms: []
+    to achieve a target thickness and refine the material's structure.
+  synonyms:
+  - cold rolling
+  - hot rolling
+  - mechanical deformation
+  - cold working
+  - pressing
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: target_thickness
     label: Target Thickness
     type: number
@@ -3329,33 +2709,15 @@ processes:
   source_schema: official
 - id: sample_cutting
   label: Sample Cutting
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - SampleCutting
-  definition: 'The process of dividing a bulk material into smaller pieces or specific
+  definition: The process of dividing a bulk material into smaller pieces or specific
     shapes to prepare samples for subsequent experimental analysis.
-
-    Synonyms: sectioning, dicing, cutting'
-  synonyms: []
+  synonyms:
+  - sectioning
+  - dicing
+  - cutting
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: sample_shape
     label: Sample Shape
     type: string
@@ -3373,29 +2735,14 @@ processes:
   hierarchy:
   - PostProcessing
   - SampleStabilization
-  definition: 'The process of immersing a sample in a specific medium to stabilize
+  definition: The process of immersing a sample in a specific medium to stabilize
     its chemical or physical state, typically to prevent unwanted reactions such as
     oxidation or combustion.
-
-    Synonyms: Stabilization, Quenching, Dipping stabilization'
-  synonyms: []
+  synonyms:
+  - Stabilization
+  - Quenching
+  - Dipping stabilization
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: immersion_medium
     label: Immersion Medium
     type: string
@@ -3439,28 +2786,12 @@ processes:
   hierarchy:
   - Sintering
   - Sintering
-  definition: 'The process of compacting and forming a solid mass of material by heat
+  definition: The process of compacting and forming a solid mass of material by heat
     or pressure without melting it to the point of liquefaction.
-
-    Synonyms: thermal bonding, sintering process'
-  synonyms: []
+  synonyms:
+  - thermal bonding
+  - sintering process
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: sintering_temperature
     label: Sintering Temperature
     type: number
@@ -3506,33 +2837,14 @@ processes:
   source_schema: official
 - id: slurry_preparation
   label: Slurry Preparation
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - SlurryPreparation
-  definition: 'The process of mixing a powdered material with a binder to create a
+  definition: The process of mixing a powdered material with a binder to create a
     slurry for subsequent application.
-
-    Synonyms: slurry preparation, powder mixing'
-  synonyms: []
+  synonyms:
+  - slurry preparation
+  - powder mixing
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: material
     label: Material
     type: string
@@ -3560,28 +2872,13 @@ processes:
   hierarchy:
   - Sintering
   - SparkPlasmaSintering
-  definition: 'A field-assisted sintering technique that utilizes pulsed direct current
+  definition: A field-assisted sintering technique that utilizes pulsed direct current
     and uniaxial pressure to rapidly consolidate powder into a dense solid.
-
-    Synonyms: SPS, Field Assisted Sintering Technique, FAST'
-  synonyms: []
+  synonyms:
+  - SPS
+  - Field Assisted Sintering Technique
+  - FAST
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: sintering_temperature
     label: Sintering Temperature
     type: number
@@ -3700,28 +2997,11 @@ processes:
   hierarchy:
   - Coating
   - SpinCoating
-  definition: 'A procedure where a liquid solution is applied to a substrate and rotated
+  definition: A procedure where a liquid solution is applied to a substrate and rotated
     at high speed to produce a uniform thin film via centrifugal force.
-
-    Synonyms: spin-coating'
-  synonyms: []
+  synonyms:
+  - spin-coating
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: medium
     label: Medium
     type: string
@@ -3763,29 +3043,14 @@ processes:
   hierarchy:
   - ThinFilmDeposition
   - Sputtering
-  definition: 'A physical vapor deposition process where atoms are ejected from a
-    target material due to bombardment by energetic particles and deposited onto a
-    substrate to form a thin film.
-
-    Synonyms: magnetron sputtering, co-sputtering, PVD sputtering'
-  synonyms: []
+  definition: A physical vapor deposition process where atoms are ejected from a target
+    material due to bombardment by energetic particles and deposited onto a substrate
+    to form a thin film.
+  synonyms:
+  - magnetron sputtering
+  - co-sputtering
+  - PVD sputtering
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: target_material
     label: Target Material
     type: string
@@ -3899,33 +3164,15 @@ processes:
   source_schema: official
 - id: surface_exposure
   label: Surface Exposure
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - SurfaceExposure
-  definition: 'The process of exposing a sample surface to specific gases to modify
+  definition: The process of exposing a sample surface to specific gases to modify
     the surface chemistry, induce strain, or achieve other surface-level modifications.
-
-    Synonyms: gas exposure, surface gas treatment, chemical gas exposure'
-  synonyms: []
+  synonyms:
+  - gas exposure
+  - surface gas treatment
+  - chemical gas exposure
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: gas_type
     label: Gas Type
     type: string
@@ -3970,33 +3217,14 @@ processes:
   source_schema: official
 - id: surface_grinding
   label: Surface Grinding
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - SurfaceGrinding
-  definition: 'The process of removing material from the surface of a sample using
+  definition: The process of removing material from the surface of a sample using
     abrasives to achieve a specific surface finish, flatness, or smoothness.
-
-    Synonyms: abrasive grinding, surface polishing'
-  synonyms: []
+  synonyms:
+  - abrasive grinding
+  - surface polishing
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: abrasive_material
     label: Abrasive Material
     type: string
@@ -4008,34 +3236,19 @@ processes:
   status: official
   source_schema: official
 - id: tem_grid_mounting
-  label: Tem Grid Mounting
+  label: TEM Grid Mounting
   category_id: sample_preparation
   category_label: Sample Preparation
   hierarchy:
   - SamplePreparation
   - TemGridMounting
-  definition: 'The process of transferring sample slices or sections onto a support
+  definition: The process of transferring sample slices or sections onto a support
     grid for Transmission Electron Microscopy (TEM) analysis.
-
-    Synonyms: TEM mounting, grid loading, sample transfer to grid'
-  synonyms: []
+  synonyms:
+  - TEM mounting
+  - grid loading
+  - sample transfer to grid
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: grid_type
     label: Grid Type
     type: string
@@ -4069,29 +3282,15 @@ processes:
   hierarchy:
   - HeatTreatment
   - ThermalCoarsening
-  definition: 'A thermal process applied to nanoporous materials to induce structural
+  definition: A thermal process applied to nanoporous materials to induce structural
     evolution, specifically the coarsening of ligaments and adjustment of pore size
     through heating.
-
-    Synonyms: annealing, thermal annealing, heat treatment, ligament coarsening'
-  synonyms: []
+  synonyms:
+  - annealing
+  - thermal annealing
+  - heat treatment
+  - ligament coarsening
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: temperature
     label: Temperature
     type: number
@@ -4233,29 +3432,13 @@ processes:
   hierarchy:
   - HeatTreatment
   - ThermalCycling
-  definition: 'A process of repeatedly cycling a material through a range of temperatures
+  definition: A process of repeatedly cycling a material through a range of temperatures
     to induce structural changes, such as coarsening, or to study material behavior
     such as stress evolution.
-
-    Synonyms: cyclic thermal treatment, thermal cycling'
-  synonyms: []
+  synonyms:
+  - cyclic thermal treatment
+  - thermal cycling
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: temperature
     label: Temperature
     type: number
@@ -4297,28 +3480,13 @@ processes:
   hierarchy:
   - ThermalTreatment
   - ThermalTreatment
-  definition: 'The application of heat to a material for a specific duration and often
+  definition: The application of heat to a material for a specific duration and often
     under a controlled atmosphere to modify its structural or textural properties.
-
-    Synonyms: Annealing, Heat treatment, Thermal processing'
-  synonyms: []
+  synonyms:
+  - Annealing
+  - Heat treatment
+  - Thermal processing
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: temperature
     label: Temperature
     type: number
@@ -4363,33 +3531,14 @@ processes:
   source_schema: official
 - id: ultramicrotomy
   label: Ultramicrotomy
-  category_id: base_model
-  category_label: Base Model
   hierarchy:
-  - BaseModel
   - Ultramicrotomy
-  definition: 'The process of cutting extremely thin sections of a sample, typically
+  definition: The process of cutting extremely thin sections of a sample, typically
     for transmission electron microscopy (TEM), using an ultramicrotome.
-
-    Synonyms: ultra-microtomy, ultrathin sectioning'
-  synonyms: []
+  synonyms:
+  - ultra-microtomy
+  - ultrathin sectioning
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: equipment
     label: Equipment
     type: string
@@ -4439,28 +3588,12 @@ processes:
   hierarchy:
   - MechanicalShaping
   - WireDrawing
-  definition: 'A mechanical process of reducing the cross-section of a rod or wire
+  definition: A mechanical process of reducing the cross-section of a rod or wire
     by pulling it through a shaped die to achieve a desired cylindrical geometry.
-
-    Synonyms: wire drawing, drawing'
-  synonyms: []
+  synonyms:
+  - wire drawing
+  - drawing
   parameters:
-  - id: process_identifier
-    label: Process Identifier
-    type: string
-    required: false
-    description: Stable process identifier from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
-  - id: process_name
-    label: Process Name
-    type: string
-    required: false
-    description: Human readable process name from the source schema.
-    example_values: []
-    status: official
-    source_schema: official
   - id: sample_diameter
     label: Sample Diameter
     type: number
